@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
     public float runCountdown = 4f;
+    public int arrows = 3;
 
     public int healers = 5;
 
@@ -23,7 +24,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMoving = false;
     public bool _isFacingRight = true;
+    public bool _hasSuperJump = true;
     public float jumpImpulse = 10f;
+    public float superJumpImpulse = 26f;
 
     private float CurrentMoveSpeed { get
     
@@ -200,10 +203,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump)
+        {
+            animator.SetTrigger(AnimationStrings.jump);
+            rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
         }
     }
 
@@ -240,9 +248,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnRangeAttack(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && arrows > 0)
         {
             animator.SetTrigger(AnimationStrings.rangeAttack);
+            arrows -= 1;
         }
     }
 }

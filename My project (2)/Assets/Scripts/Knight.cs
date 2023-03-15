@@ -90,7 +90,7 @@ public class Knight : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(touchingdirections.IsGrounded && touchingdirections.IsOnWall)
+        if(touchingdirections.IsGrounded && touchingdirections.IsOnWall && damageable.IsAlive)
         {
             FlipDirection();
         }
