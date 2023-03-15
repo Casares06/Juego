@@ -1,2 +1,2 @@
-# Juego
-El juego que estamos haciendo
+# Amazing game
+Metroidvania in development
