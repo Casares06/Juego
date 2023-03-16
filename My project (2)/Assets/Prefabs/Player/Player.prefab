@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KnightAttackDamage: 10
   knockback: {x: 1, y: 1}
+  gotHit: 0
 --- !u!1 &4552013888979319743
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,10 +215,13 @@ MonoBehaviour:
   runSpeed: 8
   SuperRunSpeed: 12
   runCountdown: 4
+  arrows: 3
   healers: 5
   healthRestore: 10
   _isFacingRight: 1
+  _hasSuperJump: 1
   jumpImpulse: 13
+  superJumpImpulse: 26
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +485,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _maxHealth: 100
+  gotHit: 0
   _health: 100
   _isAlive: 1
   IsInvincible: 0
@@ -580,6 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KnightAttackDamage: 15
   knockback: {x: 1, y: 1}
+  gotHit: 0
 --- !u!1 &6985180328526757985
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KnightAttackDamage: 25
   knockback: {x: 5, y: 2.5}
+  gotHit: 0
 --- !u!1 &8221609519116095809
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6290793957659623524}
+  - component: {fileID: 4689714036141815451}
   m_Layer: 7
   m_Name: BowAttack
   m_TagString: Untagged
@@ -692,3 +700,17 @@ Transform:
   m_Father: {fileID: 4552013888979319738}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4689714036141815451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221609519116095809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d4cfa35d1cb46cc94364c80582dca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  launchPoint: {fileID: 6290793957659623524}
+  proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}

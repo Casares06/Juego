@@ -8,6 +8,7 @@ public class Proyectile : MonoBehaviour
     public Vector2 knockback = new Vector2(3, 1);
     public int damage = 10;
     public bool gotHit;
+    public float destroyTime = 5f;
 
     Rigidbody2D rb;
 
@@ -20,6 +21,15 @@ public class Proyectile : MonoBehaviour
     void Start()
     {
         rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);
+    }
+
+    void Update()
+    {
+        destroyTime -= Time.deltaTime;
+        if(destroyTime < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
