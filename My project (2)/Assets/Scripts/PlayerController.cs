@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
 
     private bool _isMoving = false;
+    private bool _isRangeAttacking = false;
     public bool _isFacingRight = true;
     public bool _hasSuperJump = true;
     public float jumpImpulse = 10f;
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private float CurrentMoveSpeed { get
     
      {
-        if (CanMove)
+        if (CanMove && !_isRangeAttacking)
         {
             if (IsMoving && !touchingdirections.IsOnWall)
             {
@@ -251,7 +252,10 @@ public class PlayerController : MonoBehaviour
         if (context.started && arrows > 0)
         {
             animator.SetTrigger(AnimationStrings.rangeAttack);
+            
             arrows -= 1;
         }
+        
+        
     }
 }
