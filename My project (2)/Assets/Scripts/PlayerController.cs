@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
 
     public bool IsFacingRight{get {return _isFacingRight;  } private set {
-        if(_isFacingRight != value)
+        if(_isFacingRight != value && damageable.IsAlive)
         {
             transform.localScale *= new Vector2(-1, 1);
         }
