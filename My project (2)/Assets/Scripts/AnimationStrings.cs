@@ -23,6 +23,7 @@ internal class AnimationStrings
     internal static string AttackCooldown = "AttackCooldown";
     internal static string heal = "Heal";
     internal static string rangeAttack = "RangeAttack";
+    internal static string hasTarget1 = "HasTarget1";
 
 
 
