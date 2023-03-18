@@ -221,7 +221,7 @@ MonoBehaviour:
   _isFacingRight: 1
   _hasSuperJump: 1
   jumpImpulse: 13
-  superJumpImpulse: 26
+  superJumpImpulse: 17
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,8 +8,11 @@ public class FyingEye : MonoBehaviour
     public float waypointReachedDistance = 0.1f;
     public DetectionZone detectionZone;
     public DetectionZone detectionZone1;
+    public DetectionZone detectionZone2;
     public List<Transform> waypoints;
     public Collider2D deathCollider;
+    public Transform launchPoint;
+    public GameObject proyectilePrefab;
 
     Animator animator;
     Rigidbody2D rb;
@@ -20,6 +23,7 @@ public class FyingEye : MonoBehaviour
 
     public bool _hasTarget = false;
     public bool _hasTarget1 = false;
+    public bool _hasTarget2 = false;
 
     public bool HasTarget { get{ return _hasTarget; 
        
@@ -37,6 +41,15 @@ public class FyingEye : MonoBehaviour
         {
             _hasTarget1 = value;
             animator.SetBool(AnimationStrings.hasTarget1, value);
+        }
+    }
+    public bool HasTarget2 { get{ return _hasTarget2; 
+       
+        }   
+        set
+        {
+            _hasTarget2 = value;
+            animator.SetBool(AnimationStrings.hasTarget2, value);
         }
     }
 
@@ -64,6 +77,7 @@ public class FyingEye : MonoBehaviour
     {
         HasTarget = detectionZone.DetectedColliders.Count > 0;
         HasTarget1 = detectionZone1.DetectedColliders.Count > 0;
+        HasTarget2 = detectionZone2.DetectedColliders.Count > 0;
     }
 
     void FixedUpdate()
@@ -126,6 +140,13 @@ public class FyingEye : MonoBehaviour
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
         }
+    }
+
+    public void FireProyectile()
+    {
+        GameObject proyectile = Instantiate(proyectilePrefab, launchPoint.position, proyectilePrefab.transform.rotation);
+        Vector3 origScale = proyectile.transform.localScale;
+        proyectile.transform.localScale = new Vector3(origScale.x * transform.localScale.x > 0 ? 1 : -1, origScale.y, origScale.z);
     }
 
 }
