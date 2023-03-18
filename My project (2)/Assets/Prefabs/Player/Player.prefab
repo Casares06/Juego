@@ -215,6 +215,7 @@ MonoBehaviour:
   runSpeed: 8
   SuperRunSpeed: 12
   runCountdown: 4
+  fallingWallVelocity: 3
   arrows: 3
   healers: 5
   healthRestore: 10

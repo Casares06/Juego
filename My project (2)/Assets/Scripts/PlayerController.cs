@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
             IsSuperRunning = false;
         }
 
-        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded)
+        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, -fallingWallVelocity);
         }
@@ -267,7 +267,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        Debug.Log("YEAH");
         if (context.started)
         {
             animator.SetBool(AnimationStrings.crouched, true);
