@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
     public float runCountdown = 4f;
+    public float fallingWallVelocity = 2f;
     public int arrows = 3;
 
     public int healers = 5;
@@ -160,6 +161,10 @@ public class PlayerController : MonoBehaviour
             IsSuperRunning = false;
         }
 
+        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -fallingWallVelocity);
+        }
 
         
     }
