@@ -205,12 +205,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
-        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump)
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
