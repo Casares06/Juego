@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5592523688672295681}
   - component: {fileID: 5725172534915126423}
   - component: {fileID: 5414530951970269709}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +73,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474947526150998348}
-  - component: {fileID: 2942720999591884891}
   - component: {fileID: 2557469235179860608}
-  m_Layer: 9
+  - component: {fileID: 2942720999591884891}
+  m_Layer: 10
   m_Name: Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,21 +97,6 @@ Transform:
   m_Father: {fileID: 1124818009112554356}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2942720999591884891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647305991473748326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KnightAttackDamage: 30
-  knockback: {x: 4, y: 0}
-  gotHit: 0
 --- !u!70 &2557469235179860608
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -128,6 +113,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0.57928944, y: 0.004709959}
   m_Size: {x: 3.033804, y: 3.0338044}
   m_Direction: 0
+--- !u!114 &2942720999591884891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647305991473748326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnightAttackDamage: 30
+  knockback: {x: 4, y: 0}
+  gotHit: 0
 --- !u!1 &3865537634982927574
 GameObject:
   m_ObjectHideFlags: 0

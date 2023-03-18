@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
+    public float crouchSpeed = 2f;
     public float runCountdown = 4f;
     public float fallingWallVelocity = 2f;
     public int arrows = 3;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool _hasSuperJump = true;
     public float jumpImpulse = 10f;
     public float superJumpImpulse = 26f;
+    private bool IsCrouched;
 
     private float CurrentMoveSpeed { get
     
@@ -37,13 +39,17 @@ public class PlayerController : MonoBehaviour
         {
             if (IsMoving && !touchingdirections.IsOnWall)
             {
-                if(IsRunning && !IsSuperRunning)
+                if(IsRunning && !IsSuperRunning && !IsCrouched)
                 {
                     return runSpeed;
                 }
-                else if (IsSuperRunning && IsRunning)
+                else if (IsSuperRunning && IsRunning && !IsCrouched)
                 {
                     return SuperRunSpeed;
+                }
+                else if (IsCrouched)
+                {
+                    return crouchSpeed;
                 }
                 else
                 {
@@ -161,7 +167,7 @@ public class PlayerController : MonoBehaviour
             IsSuperRunning = false;
         }
 
-        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded && rb.velocity.y > 0)
+        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded && rb.velocity.y < 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, -fallingWallVelocity);
         }
@@ -210,12 +216,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump || context.started && touchingdirections.IsOnWall && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
-        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump || context.started && touchingdirections.IsOnWall && _hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
@@ -270,12 +276,14 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetBool(AnimationStrings.crouched, true);
+            IsCrouched = true;
             
         }
 
         else if (context.canceled)
         {
             animator.SetBool(AnimationStrings.crouched, false);
+            IsCrouched = false;
         }
         
         
