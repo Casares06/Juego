@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
     public float runCountdown = 4f;
+    public float fallingWallVelocity = 2f;
     public int arrows = 3;
 
     public int healers = 5;
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(AnimationStrings.isMoving, value);
      }
     }
+
 
     private bool _isRunning = false;
 
@@ -159,6 +161,10 @@ public class PlayerController : MonoBehaviour
             IsSuperRunning = false;
         }
 
+        if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -fallingWallVelocity);
+        }
 
         
     }
@@ -204,12 +210,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
-        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump)
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump || context.started && touchingdirections.IsOnWall && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
@@ -254,6 +260,23 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(AnimationStrings.rangeAttack);
             
             arrows -= 1;
+        }
+        
+        
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        Debug.Log("YEAH");
+        if (context.started)
+        {
+            animator.SetBool(AnimationStrings.crouched, true);
+            
+        }
+
+        else if (context.canceled)
+        {
+            animator.SetBool(AnimationStrings.crouched, false);
         }
         
         

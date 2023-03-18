@@ -221,7 +221,7 @@ MonoBehaviour:
   _isFacingRight: 1
   _hasSuperJump: 1
   jumpImpulse: 13
-  superJumpImpulse: 26
+  superJumpImpulse: 17
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +387,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e8c97e5a-68f1-455c-a4dd-043cd148c385
     m_ActionName: Player/RangeAttack[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1004854357500473865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 65a21f79-00be-451c-8049-e263ab2352c3
+    m_ActionName: Player/Crouch[/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -425,8 +441,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019484162, y: -0.24035513}
-  m_Size: {x: 0.48815608, y: 1.7092607}
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 0.5, y: 1.8}
   m_Direction: 0
 --- !u!114 &4230035061379295045
 MonoBehaviour:
