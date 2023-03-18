@@ -25,6 +25,7 @@ internal class AnimationStrings
     internal static string rangeAttack = "RangeAttack";
     internal static string hasTarget1 = "HasTarget1";
     internal static string hasTarget2 = "HasTarget2";
+    internal static string crouched = "Crouched";
 
 
 

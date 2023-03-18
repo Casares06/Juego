@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
      }
     }
 
+
     private bool _isRunning = false;
 
     public bool IsRunning
@@ -254,6 +255,23 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(AnimationStrings.rangeAttack);
             
             arrows -= 1;
+        }
+        
+        
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        Debug.Log("YEAH");
+        if (context.started)
+        {
+            animator.SetBool(AnimationStrings.crouched, true);
+            
+        }
+
+        else if (context.canceled)
+        {
+            animator.SetBool(AnimationStrings.crouched, false);
         }
         
         

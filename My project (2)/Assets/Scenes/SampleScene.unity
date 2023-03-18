@@ -14741,6 +14741,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8482968280549620611, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482968280549620611, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: 65a21f79-00be-451c-8049-e263ab2352c3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482968280549620611, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/Crouch[/Keyboard/s]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
 --- !u!1001 &6066923570118842164
