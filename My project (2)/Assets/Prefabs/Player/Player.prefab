@@ -82,6 +82,89 @@ MonoBehaviour:
   KnightAttackDamage: 10
   knockback: {x: 1, y: 1}
   gotHit: 0
+--- !u!1 &927103738050030163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2961526859236022025}
+  - component: {fileID: 3812776969343773327}
+  - component: {fileID: 241677977298493802}
+  m_Layer: 9
+  m_Name: AirAttack1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2961526859236022025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927103738050030163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4552013888979319738}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &3812776969343773327
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927103738050030163}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.44943094, y: 0.2882738}
+      - {x: 0.13704532, y: 0.6329725}
+      - {x: -0.9184818, y: 0.9489742}
+      - {x: -0.36672115, y: 0.009981275}
+      - {x: -2.411397, y: 0.81407803}
+      - {x: -2.194687, y: 0.1874001}
+      - {x: -1.3595443, y: -0.37303305}
+      - {x: -0.33277547, y: -0.4724387}
+      - {x: 0.15272999, y: -0.3657539}
+      - {x: 0.46396446, y: -0.05129206}
+--- !u!114 &241677977298493802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927103738050030163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnightAttackDamage: 15
+  knockback: {x: 0, y: 0}
+  gotHit: 0
 --- !u!1 &4552013888979319743
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +206,8 @@ Transform:
   - {fileID: 5781161081615544560}
   - {fileID: 6701675489751114558}
   - {fileID: 6290793957659623524}
+  - {fileID: 2961526859236022025}
+  - {fileID: 781994023204621471}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -214,13 +299,17 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   SuperRunSpeed: 12
+  crouchSpeed: 2
   runCountdown: 4
   fallingWallVelocity: 3
+  wallJumpImpulseY: 10
+  wallJumpImpulseX: 5
   arrows: 3
   healers: 5
   healthRestore: 10
   _isFacingRight: 1
-  _hasSuperJump: 1
+  _hasSuperJump: 0
+  HasWallJump: 1
   jumpImpulse: 13
   superJumpImpulse: 17
 --- !u!114 &8482968280549620611
@@ -521,6 +610,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
+--- !u!1 &4558056051195900071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781994023204621471}
+  - component: {fileID: 8456700918585013866}
+  - component: {fileID: 6116061558006780002}
+  m_Layer: 9
+  m_Name: AirAttack2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781994023204621471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558056051195900071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4552013888979319738}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &8456700918585013866
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558056051195900071}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5293107, y: 0.39478207}
+      - {x: 0.13704532, y: 0.8393316}
+      - {x: -0.63889503, y: 0.9223471}
+      - {x: -1.4353256, y: 0.3316772}
+      - {x: -1.4251394, y: -0.08986986}
+      - {x: -0.5828781, y: 0.22150731}
+      - {x: -0.021626472, y: -0.14449364}
+      - {x: -1.013391, y: -1.0586779}
+      - {x: -0.019916892, y: -0.89181364}
+      - {x: 0.3657503, y: -0.49223208}
+      - {x: 0.5238781, y: -0.26430786}
+--- !u!114 &6116061558006780002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558056051195900071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnightAttackDamage: 20
+  knockback: {x: 0, y: 0}
+  gotHit: 0
 --- !u!1 &4726588725359584315
 GameObject:
   m_ObjectHideFlags: 0

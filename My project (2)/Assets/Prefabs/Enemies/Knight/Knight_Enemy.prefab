@@ -312,6 +312,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _maxHealth: 30
+  gotHit: 0
   _health: 30
   _isAlive: 1
   IsInvincible: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KnightAttackDamage: 15
   knockback: {x: 5, y: 2}
+  gotHit: 0
 --- !u!1 &3723454071880222656
 GameObject:
   m_ObjectHideFlags: 0

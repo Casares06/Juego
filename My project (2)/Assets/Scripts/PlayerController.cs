@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float crouchSpeed = 2f;
     public float runCountdown = 4f;
     public float fallingWallVelocity = 2f;
+    public float wallJumpImpulseY = 6f;
+    public float wallJumpImpulseX = 5f;
     public int arrows = 3;
 
     public int healers = 5;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRangeAttacking = false;
     public bool _isFacingRight = true;
     public bool _hasSuperJump = true;
+    public bool HasWallJump = true;
     public float jumpImpulse = 10f;
     public float superJumpImpulse = 26f;
     private bool IsCrouched;
@@ -119,6 +122,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool CanWallJump
+    {
+        get
+        {
+            if (HasWallJump)
+            {
+                return animator.GetBool(AnimationStrings.canWallJump);
+            }
+            else 
+            {
+                return false;
+            }
+        }
+    }
+
     public bool CanMove{get
     {
         return animator.GetBool(AnimationStrings.canMove);
@@ -196,6 +214,7 @@ public class PlayerController : MonoBehaviour
             // face left
             IsFacingRight = false;
         }
+        runCountdown = 4f;
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -216,15 +235,21 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump || context.started && touchingdirections.IsOnWall && !_hasSuperJump)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
-        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump || context.started && touchingdirections.IsOnWall && _hasSuperJump)
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
+        }
+        
+        else if (context.started && CanWallJump)
+        {
+            animator.SetTrigger(AnimationStrings.jump);
+            rb.velocity = new Vector2(rb.velocity.x, wallJumpImpulseY);
         }
     }
 

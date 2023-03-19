@@ -17817,8 +17817,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1004854357500473865, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
-      propertyPath: _hasSuperJump
-      value: 0
+      propertyPath: wallJumpImpulseX
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 2516997788761614488, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
       propertyPath: m_Enabled
