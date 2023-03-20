@@ -8,7 +8,11 @@ public class SetBooleanBehaviour : StateMachineBehaviour
     public string boolName;
     public bool updateOnState;
     public bool updateOnStateMachine;
-    public bool valueOnEnter, valueOnExit;
+    public bool valueOnEnter, valueOnExit, valueOnDelay;
+    public float enableDelay = 0.25f;
+
+    private bool delayDone = false;
+    private float timeSinceEntered = 0;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,11 +23,19 @@ public class SetBooleanBehaviour : StateMachineBehaviour
        }
     }
 
-    // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (valueOnDelay && !delayDone)
+        {
+            timeSinceEntered += Time.deltaTime;
+            if (timeSinceEntered > enableDelay)
+            {
+                animator.SetBool(boolName, valueOnDelay);
+                delayDone = true;
+            }
+        }
+        
+    }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

@@ -132,7 +132,7 @@ public class Knight : MonoBehaviour
 
     public void OnCliffDetected()
     {
-        if(touchingdirections.IsGrounded)
+        if(touchingdirections.IsGrounded && damageable.IsAlive)
         {
             FlipDirection();
         }

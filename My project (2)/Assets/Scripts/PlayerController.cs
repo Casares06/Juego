@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public float jumpImpulse = 10f;
     public float superJumpImpulse = 26f;
     private bool IsCrouched;
+    public bool ReduceArrows;
 
     private float CurrentMoveSpeed { get
     
@@ -289,8 +290,7 @@ public class PlayerController : MonoBehaviour
         if (context.started && arrows > 0)
         {
             animator.SetTrigger(AnimationStrings.rangeAttack);
-            
-            arrows -= 1;
+            ReduceArrows = true;
         }
         
         
