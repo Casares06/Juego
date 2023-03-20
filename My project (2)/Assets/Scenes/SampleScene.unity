@@ -13479,6 +13479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a53338534b94216b49aac4e9bc14a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleEffect: {fileID: 8227631829943065244, guid: 1da086532f2e54b1cb0d8750955fffea, type: 3}
+  playerPosition: {fileID: 10458054}
 --- !u!1001 &1661267670
 PrefabInstance:
   m_ObjectHideFlags: 0
