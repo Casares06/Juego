@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4230035061379295045}
   - component: {fileID: 4554796014110484685}
   - component: {fileID: 8977965331118695016}
+  - component: {fileID: 5628106784042799158}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -312,6 +313,8 @@ MonoBehaviour:
   HasWallJump: 1
   jumpImpulse: 13
   superJumpImpulse: 17
+  HasBow: 0
+  ReduceArrows: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +503,7 @@ MonoBehaviour:
   m_Camera: {fileID: 0}
 --- !u!95 &8339557263659744157
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -517,7 +520,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!70 &3195356347796621748
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -590,6 +593,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 100
   gotHit: 0
   _health: 100
@@ -610,6 +616,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
+--- !u!114 &5628106784042799158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552013888979319743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933880dc90794e6c80c00d9ff747b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4558056051195900071
 GameObject:
   m_ObjectHideFlags: 0
