@@ -315,6 +315,7 @@ MonoBehaviour:
   superJumpImpulse: 17
   HasBow: 0
   ReduceArrows: 0
+  HasHealers: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0

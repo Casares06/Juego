@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class healer : MonoBehaviour
 {
- public ParticleSystem particleEffect;
- public Transform playerPosition;
+    PlayerController Pc;
 
-
+    void Start()
+    {
+        Pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        if(Pc.HasHealers)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController Pc = collision.GetComponent<PlayerController>();
+        if(collision.gameObject.tag == "Player")
+        {
+            Pc.HasHealers = true;
+            Destroy(gameObject);
+        }
 
-        Pc.HasHealers = true;
-        Instantiate(particleEffect, playerPosition);
-        Destroy(gameObject);
     }
 }
