@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    public ParticleSystem upgradeEffect;
+    public Transform playerPosition;
     
     void Start()
     {
@@ -18,6 +20,14 @@ public class PlayerManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "upgrade")
+        {
+            Instantiate(upgradeEffect, playerPosition);
+        }
     }
 
 }

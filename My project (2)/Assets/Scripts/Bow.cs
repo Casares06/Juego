@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-    public ParticleSystem particleEffect;
-    public Transform playerPosition;
+    PlayerController Px;
+
+    void Start()
+    {
+        Px = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        if (Px.HasBow)
+        {
+            Destroy(gameObject);
+        } 
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController Pc = collision.GetComponent<PlayerController>();
 
-        Pc.HasBow = true;
-        Instantiate(particleEffect, playerPosition);
-        Destroy(gameObject);
+        if (collision.tag == "Player")
+        {
+            Pc.HasBow = true;
+            Destroy(gameObject);
+        }
     }
 }

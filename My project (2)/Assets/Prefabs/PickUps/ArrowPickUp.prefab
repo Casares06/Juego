@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7775707209818570547}
   m_Layer: 10
   m_Name: ArrowPickUp
-  m_TagString: Untagged
+  m_TagString: upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

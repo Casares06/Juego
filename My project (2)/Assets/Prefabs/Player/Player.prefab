@@ -628,6 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6933880dc90794e6c80c00d9ff747b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeEffect: {fileID: 8227631829943065244, guid: 1da086532f2e54b1cb0d8750955fffea, type: 3}
+  playerPosition: {fileID: 4552013888979319738}
 --- !u!1 &4558056051195900071
 GameObject:
   m_ObjectHideFlags: 0

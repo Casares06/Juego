@@ -16174,7 +16174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6638801f97e944a34ac36e4a008bf404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 80713460}
   followTarget: {fileID: 0}
 --- !u!1 &968516820
 GameObject:
@@ -16457,7 +16457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6638801f97e944a34ac36e4a008bf404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 80713460}
   followTarget: {fileID: 0}
 --- !u!1 &1326422375
 GameObject:
@@ -17762,7 +17762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6638801f97e944a34ac36e4a008bf404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 80713460}
   followTarget: {fileID: 0}
 --- !u!1001 &3265206073010378954
 PrefabInstance:
