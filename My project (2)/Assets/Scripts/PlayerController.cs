@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool IsCrouched;
     public bool HasBow;
     public bool ReduceArrows;
+    public bool HasHealers;
 
     private float CurrentMoveSpeed { get
     
@@ -271,7 +272,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal (InputAction.CallbackContext context)
     {
-        if(context.started && damageable.IsAlive && damageable.Health < damageable.MaxHealth && touchingdirections.IsGrounded && healers > 0)
+        if(context.started && damageable.IsAlive && damageable.Health < damageable.MaxHealth && touchingdirections.IsGrounded && healers > 0 && HasHealers)
         {
             damageable.Health += healthRestore;
             healers -= 1;
