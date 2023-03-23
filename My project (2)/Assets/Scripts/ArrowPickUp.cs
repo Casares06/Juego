@@ -6,10 +6,21 @@ public class ArrowPickUp : MonoBehaviour
 {
     PlayerController Pc;
     public bool CanTakeArrow;
+    private float destroyTime = 15f;
 
     void Start()
     {
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
+    void Update()
+    {
+        destroyTime -= Time.deltaTime;
+
+        if(destroyTime <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
