@@ -266,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80713457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153.22896, y: -8.6720295, z: -10}
+  m_LocalPosition: {x: 154.74, y: -8.602839, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16365,6 +16365,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1775070579590838188, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: _health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775070579590838188, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: _maxHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775070579590838188, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: InvincibilityTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3265206073046539925, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
       propertyPath: m_Name
       value: Knight_Enemy (1)
@@ -16404,6 +16416,18 @@ PrefabInstance:
     - target: {fileID: 3265206073046539947, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566526747247402259, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: knockback.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566526747247402259, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: knockback.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566526747247402259, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}
+      propertyPath: KnightAttackDamage
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5510ea8ff34ba40fe8bc748e7515bf68, type: 3}

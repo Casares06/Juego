@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public float wallJumpImpulseX = 5f;
     public int arrows = 3;
 
-    public int healers = 5;
+    public int healers;
+    public int maxHealers;
 
     public int healthRestore = 10;
 
@@ -272,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal (InputAction.CallbackContext context)
     {
-        if(context.started && damageable.IsAlive && damageable.Health < damageable.MaxHealth && touchingdirections.IsGrounded && healers > 0 && HasHealers)
+        if(context.started && damageable.IsAlive && damageable.Health < damageable.MaxHealth && touchingdirections.IsGrounded && healers > 0)
         {
             damageable.Health += healthRestore;
             healers -= 1;

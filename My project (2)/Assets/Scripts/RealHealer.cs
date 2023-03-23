@@ -2,30 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healer : MonoBehaviour
+public class RealHealer : MonoBehaviour
 {
     PlayerController Pc;
+
+    public bool CanTake;
 
     void Start()
     {
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        if(Pc.HasHealers)
-        {
-            Destroy(gameObject);
-        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            Pc.HasHealers = true;
-            Pc.maxHealers += 2;
-            Pc.healers += 7;
-            Destroy(gameObject);
 
-            if(Pc.healers > Pc.maxHealers)
+            if(Pc.healers < Pc.maxHealers)
             {
-                Pc.healers = Pc.maxHealers;
+                CanTake = true;
+                Pc.healers += 1;
+                Destroy(gameObject);
+                
             }
         }
 

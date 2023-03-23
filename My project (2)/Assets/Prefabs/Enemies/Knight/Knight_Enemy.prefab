@@ -248,7 +248,7 @@ MonoBehaviour:
   ceilingCheckDistance: 0.05
 --- !u!95 &7111145209792922055
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -265,7 +265,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &8532001370011132286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +311,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 30
   gotHit: 0
   _health: 30
@@ -396,8 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnightAttackDamage: 15
-  knockback: {x: 5, y: 2}
+  KnightAttackDamage: 10
+  knockback: {x: 3, y: 2}
   gotHit: 0
 --- !u!1 &3723454071880222656
 GameObject:

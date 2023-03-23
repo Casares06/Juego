@@ -306,7 +306,8 @@ MonoBehaviour:
   wallJumpImpulseY: 10
   wallJumpImpulseX: 5
   arrows: 3
-  healers: 5
+  healers: 0
+  maxHealers: 0
   healthRestore: 10
   _isFacingRight: 1
   _hasSuperJump: 0
@@ -630,6 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEffect: {fileID: 8227631829943065244, guid: 1da086532f2e54b1cb0d8750955fffea, type: 3}
+  healthPickupEffect: {fileID: 8227631829943065244, guid: a66e5d7f25df64379af39b3e7177ed92, type: 3}
   playerPosition: {fileID: 4552013888979319738}
 --- !u!1 &4558056051195900071
 GameObject:

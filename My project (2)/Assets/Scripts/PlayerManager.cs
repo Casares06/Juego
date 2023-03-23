@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public ParticleSystem upgradeEffect;
+    public ParticleSystem healthPickupEffect;
     public Transform playerPosition;
     
     void Start()
@@ -24,9 +25,15 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        RealHealer RH = collision.GetComponent<RealHealer>();
         if(collision.tag == "upgrade")
         {
             Instantiate(upgradeEffect, playerPosition);
+        }
+
+        if(collision.tag == "Healer" && RH.CanTake)
+        {
+            Instantiate(healthPickupEffect, playerPosition);
         }
     }
 
