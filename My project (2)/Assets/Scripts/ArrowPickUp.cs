@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class ArrowPickUp : MonoBehaviour
 {
+    PlayerController Pc;
+    public bool CanTakeArrow;
+
+    void Start()
+    {
+        Pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController Pc = collision.GetComponent<PlayerController>();
 
-        Pc.arrows += 3;
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Player")
+        {
+            if(Pc.arrows < Pc.maxArrows)
+            {
+                CanTakeArrow = true;
+                Pc.arrows += 3;
+                if (Pc.arrows > Pc.maxArrows)
+                {
+                    Pc.arrows = Pc.maxArrows;
+                }
+                Destroy(gameObject);
+            }
+        }
+
     }
 }

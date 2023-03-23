@@ -281,8 +281,11 @@ MonoBehaviour:
   walkAcceleration: 30
   maxSpeed: 5
   walkStopRate: 0.05
+  ArrowSpawnTime: 0.03
   detectionZone: {fileID: 2187891558103341110}
   cliffdetectionzone: {fileID: 7791782485023783714}
+  arrowPickUp: {fileID: 7180548038817525168, guid: 1e27d9de9c3fa4e70bf73362bbbd46cf, type: 3}
+  healer: {fileID: 7624737998259065055, guid: 2a748af80012648ae96eed2429fb03b7, type: 3}
   _hasTarget: 0
 --- !u!114 &1775070579590838188
 MonoBehaviour:

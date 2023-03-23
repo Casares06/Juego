@@ -7,8 +7,12 @@ public class Knight : MonoBehaviour
     public float walkAcceleration = 5f;
     public float maxSpeed = 5f;
     public float walkStopRate= 0.02f;
+    public float ArrowSpawnTime;
     public DetectionZone detectionZone;
     public DetectionZone cliffdetectionzone;
+    public GameObject arrowPickUp;
+    public GameObject healer;
+    int random;
 
     Rigidbody2D rb;
     TouchingDirections touchingdirections;
@@ -85,6 +89,22 @@ public class Knight : MonoBehaviour
         if (AttackCooldown > 0)
         {
             AttackCooldown -= Time.deltaTime;
+        }
+        if (!damageable.IsAlive)
+        {
+            ArrowSpawnTime -= Time.deltaTime;
+            random = Random.Range(0,3);
+
+            if(ArrowSpawnTime < 0 && random <= 1)
+            {
+                Instantiate(arrowPickUp, transform.position, Quaternion.identity);
+                ArrowSpawnTime += 30;
+            }
+            else if(ArrowSpawnTime < 0 && random > 1)
+            {
+                Instantiate(healer, transform.position, Quaternion.identity);
+                ArrowSpawnTime += 30;
+            }
         }
     }
 

@@ -26,12 +26,19 @@ public class PlayerManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RealHealer RH = collision.GetComponent<RealHealer>();
+        ArrowPickUp ARP = collision.GetComponent<ArrowPickUp>();
+
         if(collision.tag == "upgrade")
         {
             Instantiate(upgradeEffect, playerPosition);
         }
 
         if(collision.tag == "Healer" && RH.CanTake)
+        {
+            Instantiate(healthPickupEffect, playerPosition);
+        }
+
+        if(collision.tag == "ArrowPickUp" && ARP.CanTakeArrow)
         {
             Instantiate(healthPickupEffect, playerPosition);
         }

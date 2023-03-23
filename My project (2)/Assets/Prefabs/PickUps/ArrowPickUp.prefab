@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7180548038817525169}
   m_Layer: 10
   m_Name: ArrowPickUp
-  m_TagString: upgrade
+  m_TagString: ArrowPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c251b21807e477dbbbb82ec1916906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanTakeArrow: 0
 --- !u!1 &7180548038879945641
 GameObject:
   m_ObjectHideFlags: 0

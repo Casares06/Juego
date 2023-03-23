@@ -6,6 +6,7 @@ TagManager:
   tags:
   - upgrade
   - Healer
+  - ArrowPickUp
   layers:
   - Default
   - TransparentFX

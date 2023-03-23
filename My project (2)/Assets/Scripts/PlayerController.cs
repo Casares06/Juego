@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     public float fallingWallVelocity = 2f;
     public float wallJumpImpulseY = 6f;
     public float wallJumpImpulseX = 5f;
-    public int arrows = 3;
+    public int arrows;
+    public int maxArrows;
 
     public int healers;
     public int maxHealers;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public bool HasBow;
     public bool ReduceArrows;
     public bool HasHealers;
+    public bool HasQuiver;
 
     private float CurrentMoveSpeed { get
     
@@ -263,6 +265,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(AnimationStrings.attack);
         }
+        IsSuperRunning = false;
 
     }
 
@@ -285,6 +288,7 @@ public class PlayerController : MonoBehaviour
             }
 
             CharacterEvents.characterHealed(gameObject, healthRestore);
+            IsSuperRunning = false;
         }
     }
 
@@ -295,6 +299,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(AnimationStrings.rangeAttack);
             ReduceArrows = true;
         }
+        IsSuperRunning = false;
         
         
     }
@@ -313,6 +318,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationStrings.crouched, false);
             IsCrouched = false;
         }
+        IsSuperRunning = false;
         
         
     }

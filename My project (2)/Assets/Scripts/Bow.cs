@@ -24,6 +24,8 @@ public class Bow : MonoBehaviour
         if (collision.tag == "Player")
         {
             Pc.HasBow = true;
+            Pc.arrows += 5;
+            Pc.maxArrows += 5;
             Destroy(gameObject);
         }
     }

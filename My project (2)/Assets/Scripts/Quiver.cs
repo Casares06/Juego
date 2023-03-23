@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healer : MonoBehaviour
+public class Quiver : MonoBehaviour
 {
     PlayerController Pc;
 
     void Start()
     {
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        if(Pc.HasHealers)
+
+        if(Pc.HasQuiver)
         {
             Destroy(gameObject);
         }
@@ -18,10 +19,11 @@ public class healer : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Pc.HasHealers = true;
-            Pc.maxHealers += 2;
-            Pc.healers = Pc.maxHealers;
+            Pc.HasQuiver = true;
+            Pc.maxArrows += 5;
+            Pc.arrows = Pc.maxArrows;
             Destroy(gameObject);
+
         }
 
     }

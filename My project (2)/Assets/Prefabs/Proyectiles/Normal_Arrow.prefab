@@ -103,6 +103,7 @@ MonoBehaviour:
   knockback: {x: 3, y: 1}
   damage: 10
   gotHit: 0
+  destroyTime: 0.7
 --- !u!50 &3620635293595852271
 Rigidbody2D:
   serializedVersion: 4
