@@ -193,7 +193,12 @@ public class PlayerController : MonoBehaviour
 
         if(touchingdirections.IsOnWall && !touchingdirections.IsGrounded && rb.velocity.y < 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -fallingWallVelocity);
+            rb.velocity = new Vector2(wallJumpImpulseX, -fallingWallVelocity);
+        }
+
+        if(!damageable.IsAlive)
+        {
+            damageable.Health = 0;
         }
 
         
