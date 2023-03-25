@@ -7,7 +7,8 @@ public class Knight : MonoBehaviour
     public float walkAcceleration = 5f;
     public float maxSpeed = 5f;
     public float walkStopRate= 0.02f;
-    public float ArrowSpawnTime;
+    public float ArrowSpawn;
+    public float ArrowCanSpawnTime;
     public DetectionZone detectionZone;
     public DetectionZone cliffdetectionzone;
     public GameObject arrowPickUp;
@@ -18,6 +19,7 @@ public class Knight : MonoBehaviour
     TouchingDirections touchingdirections;
     Animator animator;
     Damageable damageable;
+    PlayerController Pc;
 
     public enum WalkableDirection { Right, Left}
 
@@ -81,6 +83,7 @@ public class Knight : MonoBehaviour
         touchingdirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        Pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -92,18 +95,34 @@ public class Knight : MonoBehaviour
         }
         if (!damageable.IsAlive)
         {
-            ArrowSpawnTime -= Time.deltaTime;
-            random = Random.Range(0,3);
+            ArrowSpawn -= Time.deltaTime;
+            ArrowCanSpawnTime -= Time.deltaTime;
 
-            if(ArrowSpawnTime < 0 && random <= 1)
+            if (Pc.arrows < Pc.maxArrows && Pc.healers < Pc.maxHealers && ArrowCanSpawnTime > 0 && ArrowSpawn < 0)
+            {
+                random = Random.Range(0,3);
+
+                if(random <= 1)
+                {
+                   Instantiate(arrowPickUp, transform.position, Quaternion.identity);
+                   ArrowSpawn += 30;
+                }
+                else if(random > 1)
+                {
+                   Instantiate(healer, transform.position, Quaternion.identity);
+                   ArrowSpawn += 30;
+                }
+            }
+            else if (Pc.arrows < Pc.maxArrows && Pc.healers == Pc.maxHealers && ArrowSpawn < 0 && ArrowCanSpawnTime > 0)
             {
                 Instantiate(arrowPickUp, transform.position, Quaternion.identity);
-                ArrowSpawnTime += 30;
+                ArrowSpawn += 30;
             }
-            else if(ArrowSpawnTime < 0 && random > 1)
+
+            else if (Pc.arrows == Pc.maxArrows && Pc.healers < Pc.maxHealers && ArrowSpawn < 0 && ArrowCanSpawnTime > 0)
             {
                 Instantiate(healer, transform.position, Quaternion.identity);
-                ArrowSpawnTime += 30;
+                ArrowSpawn += 30;
             }
         }
     }
