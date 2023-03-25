@@ -305,7 +305,9 @@ MonoBehaviour:
   fallingWallVelocity: 3
   wallJumpImpulseY: 10
   wallJumpImpulseX: 5
+  climbVelocity: 2
   arrows: 0
+  maxArrows: 0
   healers: 0
   maxHealers: 0
   healthRestore: 10
@@ -317,6 +319,8 @@ MonoBehaviour:
   HasBow: 0
   ReduceArrows: 0
   HasHealers: 0
+  HasQuiver: 0
+  CanClimb: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0

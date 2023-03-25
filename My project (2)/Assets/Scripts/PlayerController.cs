@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float fallingWallVelocity = 2f;
     public float wallJumpImpulseY = 6f;
     public float wallJumpImpulseX = 5f;
+    public float climbVelocity;
     public int arrows;
     public int maxArrows;
 
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public bool ReduceArrows;
     public bool HasHealers;
     public bool HasQuiver;
+    public bool CanClimb;
+    private bool ClimbButtonHeld;
 
     private float CurrentMoveSpeed { get
     
@@ -201,6 +204,19 @@ public class PlayerController : MonoBehaviour
             damageable.Health = 0;
         }
 
+        if(ClimbButtonHeld && CanClimb)
+        {
+            animator.SetBool(AnimationStrings.climb, true);
+            rb.velocity = new Vector2(rb.velocity.x, climbVelocity);
+        }
+
+        if(!CanClimb)
+        {
+            ClimbButtonHeld = false;
+            animator.SetBool(AnimationStrings.climb, false);
+        }
+        
+
         
     }
 
@@ -246,21 +262,31 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump)
+        if(context.started && touchingdirections.IsGrounded && CanMove && !_hasSuperJump && !CanClimb)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
-        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump)
+        else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump && !CanClimb)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
         }
         
-        else if (context.started && CanWallJump)
+        else if (context.started && CanWallJump && !CanClimb)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, wallJumpImpulseY);
+        }
+
+        else if (context.started && CanClimb)
+        {
+            ClimbButtonHeld = true;
+        }
+
+        else if (context.canceled)
+        {
+            ClimbButtonHeld = false;
         }
     }
 

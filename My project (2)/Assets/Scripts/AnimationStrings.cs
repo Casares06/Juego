@@ -28,6 +28,7 @@ internal class AnimationStrings
     internal static string crouched = "Crouched";
     internal static string canWallJump = "canWallJump";
     internal static string canReduceArrows = "LessArrows";
+    internal static string climb = "Climb";
 
 
 
