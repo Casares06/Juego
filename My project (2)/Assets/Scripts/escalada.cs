@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallJump : MonoBehaviour
+public class escalada : MonoBehaviour
 {
     PlayerController Pc;
 
     void Start()
     {
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        if(Pc.HasWallJump)
+        if(Pc.HasClimb)
         {
             Destroy(gameObject);
         }
@@ -18,7 +18,7 @@ public class WallJump : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Pc.HasWallJump = true;
+            Pc.HasClimb = true;
             Destroy(gameObject);
         }
 

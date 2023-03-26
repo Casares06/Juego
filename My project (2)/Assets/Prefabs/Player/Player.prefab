@@ -320,7 +320,7 @@ MonoBehaviour:
   ReduceArrows: 0
   HasHealers: 0
   HasQuiver: 0
-  HasClimb: 1
+  HasClimb: 0
   CanClimb: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
