@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public bool ReduceArrows;
     public bool HasHealers;
     public bool HasQuiver;
+    public bool HasClimb;
     public bool CanClimb;
 
     private bool _isMoving = false;

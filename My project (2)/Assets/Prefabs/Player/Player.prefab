@@ -315,11 +315,12 @@ MonoBehaviour:
   healthRestore: 10
   _isFacingRight: 1
   _hasSuperJump: 0
-  HasWallJump: 1
+  HasWallJump: 0
   HasBow: 0
   ReduceArrows: 0
   HasHealers: 0
   HasQuiver: 0
+  HasClimb: 1
   CanClimb: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
