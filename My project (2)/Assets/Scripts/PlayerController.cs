@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [Header("Booleans")]
     public bool _isFacingRight = true;
     public bool _hasSuperJump = true;
-    public bool HasWallJump = true;
+    public bool HasWallJump;
     public bool HasBow;
     public bool ReduceArrows;
     public bool HasHealers;
