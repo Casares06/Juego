@@ -301,11 +301,13 @@ MonoBehaviour:
   runSpeed: 8
   SuperRunSpeed: 12
   crouchSpeed: 2
-  runCountdown: 4
+  climbVelocity: 4
   fallingWallVelocity: 3
+  runCountdown: 4
+  jumpImpulse: 13
+  superJumpImpulse: 17
   wallJumpImpulseY: 10
   wallJumpImpulseX: 5
-  climbVelocity: 2
   arrows: 0
   maxArrows: 0
   healers: 0
@@ -314,8 +316,6 @@ MonoBehaviour:
   _isFacingRight: 1
   _hasSuperJump: 0
   HasWallJump: 1
-  jumpImpulse: 13
-  superJumpImpulse: 17
   HasBow: 0
   ReduceArrows: 0
   HasHealers: 0
