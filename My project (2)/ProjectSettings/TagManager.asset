@@ -9,6 +9,7 @@ TagManager:
   - ArrowPickUp
   - HealerUI
   - ArrowsUI
+  - PauseMenuUI
   layers:
   - Default
   - TransparentFX

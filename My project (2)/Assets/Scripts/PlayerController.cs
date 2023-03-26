@@ -5,21 +5,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement Speed")]
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
     public float crouchSpeed = 2f;
-    public float runCountdown = 4f;
+    public float climbVelocity;
     public float fallingWallVelocity = 2f;
+    public float runCountdown = 4f;
+
+    [Header("Jump Impulses")]
+    public float jumpImpulse = 10f;
+    public float superJumpImpulse = 26f;
     public float wallJumpImpulseY = 6f;
     public float wallJumpImpulseX = 5f;
-    public float climbVelocity;
+
+    [Header("Number Objects")]
     public int arrows;
     public int maxArrows;
-
     public int healers;
     public int maxHealers;
-
     public int healthRestore = 10;
 
     Vector2 moveInput;
@@ -29,19 +34,19 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
-    private bool _isMoving = false;
-    private bool _isRangeAttacking = false;
+    [Header("Booleans")]
     public bool _isFacingRight = true;
     public bool _hasSuperJump = true;
     public bool HasWallJump = true;
-    public float jumpImpulse = 10f;
-    public float superJumpImpulse = 26f;
-    private bool IsCrouched;
     public bool HasBow;
     public bool ReduceArrows;
     public bool HasHealers;
     public bool HasQuiver;
     public bool CanClimb;
+
+    private bool _isMoving = false;
+    private bool _isRangeAttacking = false;
+    private bool IsCrouched;
     private bool ClimbButtonHeld;
 
     private float CurrentMoveSpeed { get
@@ -126,6 +131,7 @@ public class PlayerController : MonoBehaviour
         }
         set
         {
+            
             _isSuperRunning = value;
             animator.SetBool(AnimationStrings.isSuperRunning, value);
         }
@@ -148,8 +154,10 @@ public class PlayerController : MonoBehaviour
 
     public bool CanMove{get
     {
+        
         return animator.GetBool(AnimationStrings.canMove);
-    
+        
+        
     }  }
 
 
