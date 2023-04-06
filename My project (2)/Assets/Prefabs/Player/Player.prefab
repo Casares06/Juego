@@ -280,10 +280,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Material: {fileID: 6200000, guid: 4a210ab6fae05495892825c5d5bb2b43, type: 2}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1004854357500473865
 MonoBehaviour:
@@ -297,6 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07857f084eb349bf89c834baea28645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 1
+  walkStopRate: 0.01
   walkSpeed: 5
   runSpeed: 8
   SuperRunSpeed: 12
@@ -313,6 +315,7 @@ MonoBehaviour:
   healers: 0
   maxHealers: 0
   healthRestore: 10
+  coins: 0
   _isFacingRight: 1
   _hasSuperJump: 0
   HasWallJump: 0
@@ -322,6 +325,7 @@ MonoBehaviour:
   HasQuiver: 0
   HasClimb: 0
   CanClimb: 0
+  IsJumping: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeEffect: {fileID: 8227631829943065244, guid: 1da086532f2e54b1cb0d8750955fffea, type: 3}
   healthPickupEffect: {fileID: 8227631829943065244, guid: a66e5d7f25df64379af39b3e7177ed92, type: 3}
+  moneyEffect: {fileID: 8049572125987333647, guid: 802e5570de34c49c5b21ecb44f80b782, type: 3}
   playerPosition: {fileID: 4552013888979319738}
 --- !u!1 &4558056051195900071
 GameObject:

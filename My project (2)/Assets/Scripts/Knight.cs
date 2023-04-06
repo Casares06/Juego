@@ -125,6 +125,12 @@ public class Knight : MonoBehaviour
                 ArrowSpawn += 30;
             }
         }
+
+        if(rb.velocity.x == 0)
+        {
+            animator.SetBool("IsMoving", false);
+        }
+        else animator.SetBool("IsMoving", true);
     }
 
     void FixedUpdate()

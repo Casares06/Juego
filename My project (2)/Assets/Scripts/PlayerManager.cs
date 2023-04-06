@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public ParticleSystem upgradeEffect;
     public ParticleSystem healthPickupEffect;
+    public ParticleSystem moneyEffect;
     public Transform playerPosition;
     
     void Start()
@@ -41,6 +42,11 @@ public class PlayerManager : MonoBehaviour
         if(collision.tag == "ArrowPickUp" && ARP.CanTakeArrow)
         {
             Instantiate(healthPickupEffect, playerPosition);
+        }
+
+        if(collision.tag == "Money")
+        {
+            Instantiate(moneyEffect, playerPosition);
         }
     }
 

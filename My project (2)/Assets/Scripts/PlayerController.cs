@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Speed")]
+    public float acceleration = 3f;
+    public float walkStopRate = 0.01f;
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float SuperRunSpeed = 12f;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public int healers;
     public int maxHealers;
     public int healthRestore = 10;
+    public int coins;
 
     Vector2 moveInput;
     TouchingDirections touchingdirections;
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public bool HasClimb;
     public bool CanClimb;
 
+    private int FacingDirection = 1;
+    public bool IsJumping;
     private bool _isMoving = false;
     private bool _isRangeAttacking = false;
     private bool IsCrouched;
@@ -90,6 +95,7 @@ public class PlayerController : MonoBehaviour
         if(_isFacingRight != value && damageable.IsAlive)
         {
             transform.localScale *= new Vector2(-1, 1);
+            FacingDirection = -FacingDirection;
         }
         _isFacingRight = value;
 
@@ -174,8 +180,13 @@ public class PlayerController : MonoBehaviour
     {
         if(!damageable.LockVelocity)
         {
-            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + (acceleration * FacingDirection), -CurrentMoveSpeed, CurrentMoveSpeed), rb.velocity.y);
         }
+        if(rb.velocity.y <= 0)
+        {
+            rb.gravityScale = 3.5f;
+        }
+        
         
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
@@ -223,6 +234,21 @@ public class PlayerController : MonoBehaviour
         {
             ClimbButtonHeld = false;
             animator.SetBool(AnimationStrings.climb, false);
+        }
+
+        if(touchingdirections.IsGrounded || touchingdirections.IsOnWall)
+        {
+            IsJumping = false;
+            rb.gravityScale = 2;
+        }
+
+        if (rb.velocity.y > 0)
+        {
+            IsJumping = true;
+        }
+        if(rb.velocity.y < -18)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -18);
         }
         
 
@@ -276,6 +302,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
+
+        else if (context.canceled && IsJumping)
+        {
+            rb.gravityScale = 3.5f;
+        }
         else if(context.started && touchingdirections.IsGrounded && CanMove && _hasSuperJump && !CanClimb)
         {
             animator.SetTrigger(AnimationStrings.jump);
@@ -285,7 +316,7 @@ public class PlayerController : MonoBehaviour
         else if (context.started && CanWallJump && !CanClimb)
         {
             animator.SetTrigger(AnimationStrings.jump);
-            rb.velocity = new Vector2(rb.velocity.x, wallJumpImpulseY);
+            rb.velocity = new Vector2(rb.velocity.x * wallJumpImpulseX, wallJumpImpulseY);
         }
 
         else if (context.started && CanClimb)
@@ -293,7 +324,7 @@ public class PlayerController : MonoBehaviour
             ClimbButtonHeld = true;
         }
 
-        else if (context.canceled)
+        if (context.canceled && ClimbButtonHeld)
         {
             ClimbButtonHeld = false;
         }

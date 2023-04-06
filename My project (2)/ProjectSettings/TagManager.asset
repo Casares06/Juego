@@ -10,6 +10,7 @@ TagManager:
   - HealerUI
   - ArrowsUI
   - PauseMenuUI
+  - Money
   layers:
   - Default
   - TransparentFX
