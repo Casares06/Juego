@@ -308,8 +308,8 @@ MonoBehaviour:
   runCountdown: 4
   jumpImpulse: 13
   superJumpImpulse: 17
-  wallJumpImpulseY: 10
-  wallJumpImpulseX: 5
+  wallJumpImpulseY: 12
+  wallJumpImpulseX: 12
   arrows: 0
   maxArrows: 0
   healers: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   coins: 0
   _isFacingRight: 1
   _hasSuperJump: 0
-  HasWallJump: 0
+  HasWallJump: 1
   HasBow: 0
   ReduceArrows: 0
   HasHealers: 0

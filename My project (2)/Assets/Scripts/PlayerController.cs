@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    Transform transform;
 
     [Header("Booleans")]
     public bool _isFacingRight = true;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public bool HasQuiver;
     public bool HasClimb;
     public bool CanClimb;
+    private bool HasWallJumped;
 
     private int FacingDirection = 1;
     public bool IsJumping;
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour
     private bool _isRangeAttacking = false;
     private bool IsCrouched;
     private bool ClimbButtonHeld;
+    private float wallJumpTimer = 0.1f;
+    private bool CanWallJumpAgain;
 
     private float CurrentMoveSpeed { get
     
@@ -174,6 +178,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingdirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
+        transform = GetComponent<Transform>();
     }
 
     private void FixedUpdate()
@@ -185,6 +190,11 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.y <= 0)
         {
             rb.gravityScale = 3.5f;
+        }
+        if(HasWallJumped)
+        {
+            animator.SetTrigger(AnimationStrings.jump);
+            rb.velocity = new Vector2(wallJumpImpulseX * transform.localScale.x, wallJumpImpulseY);
         }
         
         
@@ -236,9 +246,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationStrings.climb, false);
         }
 
-        if(touchingdirections.IsGrounded || touchingdirections.IsOnWall)
+        if(touchingdirections.IsGrounded)
         {
             IsJumping = false;
+            HasWallJumped = false;
             rb.gravityScale = 2;
         }
 
@@ -250,8 +261,20 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, -18);
         }
-        
+        if(wallJumpTimer > 0 && HasWallJumped)
+        {
+            wallJumpTimer -= Time.deltaTime;
+        }
+        else
+        {
+            HasWallJumped = false;
+            wallJumpTimer = 0.1f;
+        }
 
+        if (!touchingdirections.IsOnWall && !touchingdirections.IsGrounded || touchingdirections.IsGrounded)
+        {
+            CanWallJumpAgain = true;
+        }
         
     }
 
@@ -313,10 +336,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, superJumpImpulse);
         }
         
-        else if (context.started && CanWallJump && !CanClimb)
+        else if (context.started && CanWallJump && !CanClimb && CanWallJumpAgain)
         {
-            animator.SetTrigger(AnimationStrings.jump);
-            rb.velocity = new Vector2(rb.velocity.x * wallJumpImpulseX, wallJumpImpulseY);
+            HasWallJumped = true;
+            CanWallJumpAgain = false;
         }
 
         else if (context.started && CanClimb)
