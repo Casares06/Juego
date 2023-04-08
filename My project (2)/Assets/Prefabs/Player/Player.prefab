@@ -612,7 +612,7 @@ MonoBehaviour:
   _health: 100
   _isAlive: 1
   IsInvincible: 0
-  InvincibilityTime: 1
+  InvincibilityTime: 0
 --- !u!114 &8977965331118695016
 MonoBehaviour:
   m_ObjectHideFlags: 0
