@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     private bool ClimbButtonHeld;
     private float wallJumpTimer = 0.1f;
     private bool CanWallJumpAgain;
+    public bool Interacted;
 
     private float CurrentMoveSpeed { get
     
@@ -415,5 +416,19 @@ public class PlayerController : MonoBehaviour
         IsSuperRunning = false;
         
         
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            Interacted = true;
+            Debug.Log("Pressed");
+        }
+
+        if(context.canceled)
+        {
+            Interacted = false;
+        }
     }
 }

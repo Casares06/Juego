@@ -326,6 +326,7 @@ MonoBehaviour:
   HasClimb: 0
   CanClimb: 0
   IsJumping: 0
+  Interacted: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +369,19 @@ MonoBehaviour:
     m_ActionId: 38da3853-5f3f-40ff-b402-11d9ca9bf6d1
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1004854357500473865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c26d367d-6f55-47a2-ad6a-4aab2e004a66
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
@@ -424,14 +437,26 @@ MonoBehaviour:
     m_ActionId: 59a992ed-5f54-43f1-8a43-ded8deb59bf5
     m_ActionName: UI/TrackedDevicePosition
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1004854357500473865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 89c6862d-5537-406e-aa09-551022954f4d
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnRun
+        m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -447,7 +472,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnJump
+        m_MethodName: OnHeal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -463,7 +488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnHeal
+        m_MethodName: OnRangeAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -479,7 +504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnRangeAttack
+        m_MethodName: OnCrouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -495,7 +520,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnCrouch
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

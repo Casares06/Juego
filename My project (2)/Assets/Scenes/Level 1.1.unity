@@ -21831,7 +21831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f364522082f6a46809b4a95419f75487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Tutorial
+  sceneToLoad: Village
   exitName: Level 1.1 Exit1
 --- !u!61 &962972836
 BoxCollider2D:
@@ -24322,7 +24322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd85e1938b3754e46a01f37386b84b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastExitName: Tutorial Exit
+  lastExitName: Village Exit
 --- !u!4 &1398525111
 Transform:
   m_ObjectHideFlags: 0

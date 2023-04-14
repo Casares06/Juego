@@ -43,14 +43,14 @@ public class Chest : MonoBehaviour
                 delayTime -= Time.deltaTime;
             } 
 
-        if (CanOpen && Input.GetKeyDown(KeyCode.E))
+        if (CanOpen && Pc.Interacted)
         {
             animator.SetBool("Open", true);
             Delay = true;
+            Pc.Interacted = false;
         }
         if (delayTime <= 0 && !IsOpen)
             {
-                Debug.Log("YEAH");
                 Instantiate(reward, position);
                 IsOpen = true;
             }
