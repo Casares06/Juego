@@ -11,6 +11,7 @@ public class ExitScene : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerPrefs.SetString("LastExitName", exitName);
+        DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadScene(sceneToLoad);
     }
 }

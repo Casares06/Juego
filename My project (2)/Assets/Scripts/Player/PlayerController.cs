@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [Header("Movement Speed")]
     public float acceleration = 3f;
@@ -59,6 +59,36 @@ public class PlayerController : MonoBehaviour
     private float wallJumpTimer = 0.1f;
     private bool CanWallJumpAgain;
     public bool Interacted;
+
+    public void LoadData(GameData data)
+    {
+        this.arrows = data.arrows;
+        this.maxArrows = data.maxArrows;
+        this.healers = data.healers;
+        this.maxHealers = data.maxHealers;
+        this.coins = data.coins;
+        this._hasSuperJump = data._hasSuperJump;
+        this.HasWallJump = data.HasWallJump;
+        this.HasBow = data.HasBow;
+        this.HasHealers = data.HasHealers;
+        this.HasQuiver = data.HasQuiver;
+        this.HasClimb = data.HasClimb;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.arrows = this.arrows;
+        data.maxArrows = this.maxArrows;
+        data.healers = this.healers;
+        data.maxHealers = this.maxHealers;
+        data.coins = this.coins;
+        data._hasSuperJump = this._hasSuperJump;
+        data.HasWallJump = this.HasWallJump;
+        data.HasBow = this.HasBow;
+        data.HasHealers = this.HasHealers;
+        data.HasQuiver = this.HasQuiver;
+        data.HasClimb = this.HasClimb;
+    }
 
     private float CurrentMoveSpeed { get
     

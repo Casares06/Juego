@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIActivation : MonoBehaviour
 {
     public bool GameIsPaused = false;
+    public Button SaveGame;
 
     PlayerController Pc;
     private GameObject HealerUI;
@@ -20,10 +22,16 @@ public class UIActivation : MonoBehaviour
         HealerUI = GameObject.FindWithTag("HealerUI");
         ArrowsUI = GameObject.FindWithTag("ArrowsUI");
         PauseMenuUI = GameObject.FindWithTag("PauseMenuUI");
+        SaveGame.onClick.AddListener(Save);
 
         HealerUI.SetActive(false);
         ArrowsUI.SetActive(false);
         PauseMenuUI.SetActive(false);
+    }
+
+    void Save()
+    {
+        DataPersistenceManager.instance.SaveGame();
     }
 
     void Update()
@@ -55,7 +63,7 @@ public class UIActivation : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        input.actions.Enable();
+        input.SwitchCurrentActionMap("Player");
     }
 
     void Pause()
@@ -63,6 +71,6 @@ public class UIActivation : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        input.actions.Disable();
+        input.SwitchCurrentActionMap("UI");
     }
 }

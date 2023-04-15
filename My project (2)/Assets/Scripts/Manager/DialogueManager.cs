@@ -72,6 +72,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
+        animator.SetBool("Speak", false);
         dialogueText.text = "";
         
     }
@@ -85,7 +86,6 @@ public class DialogueManager : MonoBehaviour
         else
         {
             ExitDialogueMode();
-            animator.SetBool("Speak", false);
         }
     }
 }
