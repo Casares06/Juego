@@ -13,6 +13,7 @@ public class Damageable : MonoBehaviour
     public int _maxHealth = 100;
     public bool gotHit;
 
+
     public int MaxHealth
     {
         get

@@ -14,6 +14,11 @@ public class FyingEye : MonoBehaviour
     public Transform launchPoint;
     public GameObject proyectilePrefab;
 
+    public int Health;
+    public int MaxHealth;
+
+    public EnemyHealthBar HealthBar;
+
     Animator animator;
     Rigidbody2D rb;
     Damageable damageable;
@@ -71,6 +76,9 @@ public class FyingEye : MonoBehaviour
     private void Start()
     {
         nextWaypoint = waypoints[waypointNum];
+        Health = damageable.Health;
+        MaxHealth = damageable.MaxHealth;
+        HealthBar.SetHealth(Health, MaxHealth);
     }
    
     void Update()
@@ -78,6 +86,9 @@ public class FyingEye : MonoBehaviour
         HasTarget = detectionZone.DetectedColliders.Count > 0;
         HasTarget1 = detectionZone1.DetectedColliders.Count > 0;
         HasTarget2 = detectionZone2.DetectedColliders.Count > 0;
+        Health = damageable.Health;
+        MaxHealth = damageable.MaxHealth;
+        HealthBar.SetHealth(Health, MaxHealth);
     }
 
     void FixedUpdate()

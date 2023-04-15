@@ -14,12 +14,17 @@ public class Knight : MonoBehaviour
     public GameObject arrowPickUp;
     public GameObject healer;
     int random;
+    public int Health;
+    public int MaxHealth;
+
+    public EnemyHealthBar HealthBar;
 
     Rigidbody2D rb;
     TouchingDirections touchingdirections;
     Animator animator;
     Damageable damageable;
     PlayerController Pc;
+
 
     public enum WalkableDirection { Right, Left}
 
@@ -86,8 +91,21 @@ public class Knight : MonoBehaviour
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+    void Start()
+    {
+        Health = damageable.Health;
+        MaxHealth = damageable.MaxHealth;
+        HealthBar.SetHealth(Health, MaxHealth);
+    }
+
+    
+
     void Update()
     {
+        Health = damageable.Health;
+        MaxHealth = damageable.MaxHealth;
+        HealthBar.SetHealth(Health, MaxHealth);
+
         HasTarget = detectionZone.DetectedColliders.Count > 0;
         if (AttackCooldown > 0)
         {
