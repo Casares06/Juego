@@ -8,6 +8,10 @@ public class HealthBar : MonoBehaviour
 {
     public Slider healthBarSlider;
     public TMP_Text healthBarText;
+
+    public Color Low;
+    public Color High;
+
     Damageable playerDamageable;
     
     void Awake()
@@ -24,6 +28,11 @@ public class HealthBar : MonoBehaviour
     {
         healthBarSlider.value = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
         healthBarText.text = "Health: " + playerDamageable.Health + "/" + playerDamageable.MaxHealth;
+    }
+
+    void Update()
+    {
+        healthBarSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, healthBarSlider.normalizedValue);
     }
 
     private void OnEnable()

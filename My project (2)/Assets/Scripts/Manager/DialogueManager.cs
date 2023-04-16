@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.InputSystem;
+using UnityEngine;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
 
     PlayerController Pc;
-    Animator animator;
+    Animator animator1;
 
     private void Awake()
     {
@@ -39,7 +42,15 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         Pc = GameObject.Find("Player").GetComponent<PlayerController>();
         input = GameObject.Find("Player").GetComponent<PlayerInput>();
-        animator = GetComponent<Animator>();
+
+        try 
+        {
+            animator1 = GameObject.Find("NPC1").GetComponent<Animator>();
+        }
+        catch(Exception e)
+        {
+            return;
+        }
     }
 
     private void Update()
@@ -72,7 +83,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        animator.SetBool("Speak", false);
+        animator1.SetBool("Speak", false);
         dialogueText.text = "";
         
     }

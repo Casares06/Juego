@@ -14,7 +14,7 @@ public class NPCTalk : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
-        DM = GetComponent<DialogueManager>();
+        DM = GameObject.Find("UI").GetComponent<DialogueManager>();
         animator = GetComponent<Animator>();
         exclamationmark.SetActive(false);
     }
