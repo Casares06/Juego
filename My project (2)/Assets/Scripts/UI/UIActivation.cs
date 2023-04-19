@@ -9,6 +9,7 @@ public class UIActivation : MonoBehaviour
 {
     public bool GameIsPaused = false;
     public Button SaveGame;
+    public Button MainMenu;
 
     PlayerController Pc;
     private GameObject HealerUI;
@@ -24,6 +25,7 @@ public class UIActivation : MonoBehaviour
         ArrowsUI = GameObject.FindWithTag("ArrowsUI");
         PauseMenuUI = GameObject.FindWithTag("PauseMenuUI");
         SaveGame.onClick.AddListener(Save);
+        MainMenu.onClick.AddListener(Menu);
 
         HealerUI.SetActive(false);
         ArrowsUI.SetActive(false);
@@ -33,6 +35,15 @@ public class UIActivation : MonoBehaviour
     void Save()
     {
         DataPersistenceManager.instance.SaveGame();
+    }
+    void Menu()
+    {
+        SceneManager.LoadSceneAsync("Main Menu");
+        if(GameIsPaused)
+        {
+            Time.timeScale = 1f;
+            GameIsPaused = false;
+        }
     }
 
     void Update()
@@ -57,6 +68,11 @@ public class UIActivation : MonoBehaviour
                 Pause();
             }
         }
+        if(Time.timeScale == 1)
+        {
+            GameIsPaused = false;
+        }
+        else GameIsPaused = true;
     }
 
     public void Resume()

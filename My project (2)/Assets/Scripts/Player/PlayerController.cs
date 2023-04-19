@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         this.HasClimb = data.HasClimb;
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData (GameData data)
     {
         data.arrows = this.arrows;
         data.maxArrows = this.maxArrows;

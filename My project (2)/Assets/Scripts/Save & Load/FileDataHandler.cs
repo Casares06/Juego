@@ -16,9 +16,9 @@ public class FileDataHandler
         this.dataFileName = dataFileName;
     }
 
-    public GameData Load()
+    public GameData Load(string profileID)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string fullPath = Path.Combine(dataDirPath, profileID, dataFileName);
         GameData loadedData = null;
 
         if(File.Exists(fullPath))
@@ -47,28 +47,61 @@ public class FileDataHandler
         return loadedData;
     }
 
-    public void Save(GameData data)
+    public void Save(GameData data, string profileID)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
-
-        string dataToStore = JsonUtility.ToJson(data, true);
-
-        using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-        {
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                writer.Write(dataToStore);
-            }
-        }
+        string fullPath = Path.Combine(dataDirPath, profileID, dataFileName);
 
         try
         {
+            string dataToStore = JsonUtility.ToJson(data, true);
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
             Debug.Log(fullPath);
+
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+              using (StreamWriter writer = new StreamWriter(stream))
+              {
+                writer.Write(dataToStore);
+              }
+            }
         }
         catch(Exception e)
             {
                 Debug.LogError("Error while saving game data from file: " + fullPath + "\n" + e);
             }
+    }
+
+    public Dictionary<string, GameData> LoadAllProfiles()
+    {
+        Dictionary<string, GameData> profileDictionary = new Dictionary<string, GameData>();
+
+        IEnumerable<DirectoryInfo> dirInfos = new DirectoryInfo(dataDirPath).EnumerateDirectories();
+
+        foreach(DirectoryInfo dirInfo in dirInfos)
+        {
+            string profileID = dirInfo.Name;
+
+            string fullPath = Path.Combine(dataDirPath, profileID, dataFileName);
+
+            if(!File.Exists(fullPath))
+            {
+                Debug.LogWarning("Skipping directory because there is no data in folder" + profileID);
+                continue;
+            }
+
+            GameData profileData = Load(profileID);
+
+            if(profileData != null)
+            {
+                profileDictionary.Add(profileID, profileData);
+            }
+            else
+            {
+                Debug.LogError("Something went wrong while loading profile: " + profileID);
+            }
+        }
+
+
+        return profileDictionary;
     }
 }

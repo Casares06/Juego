@@ -12,6 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
+    private string selectedProfileID = "";
 
     public static DataPersistenceManager instance {get; private set; }
 
@@ -33,13 +34,11 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -48,26 +47,26 @@ public class DataPersistenceManager : MonoBehaviour
         LoadGame();
     }
 
-    public void OnSceneUnloaded(Scene scene)
+    public void ChangeSelectedProfileID(string newprofileID)
     {
-        SaveGame();
+        this.selectedProfileID = newprofileID;
+        LoadGame();
     }
 
 
     public void NewGame()
     {
         this.gameData = new GameData();
-        Debug.Log("New Game");
     }
 
     public void LoadGame()
     {
-        this.gameData = dataHandler.Load();
+        this.gameData = dataHandler.Load(selectedProfileID);
 
         if(this.gameData == null)
         {
             Debug.Log("No data found");
-            NewGame();
+            return;
         }
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
@@ -78,13 +77,18 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+        if(this.gameData == null)
+        {
+            Debug.LogWarning("No data to be saved");
+            return;
+        }
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref gameData);
+            dataPersistenceObj.SaveData(gameData);
         }
         Debug.Log("Number coins: " + gameData.coins);
 
-        dataHandler.Save(gameData);
+        dataHandler.Save(gameData, selectedProfileID);
     }
 
    // private void OnApplicationQuit()
@@ -98,4 +102,15 @@ public class DataPersistenceManager : MonoBehaviour
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return dataHandler.LoadAllProfiles();
+    }
+
 }

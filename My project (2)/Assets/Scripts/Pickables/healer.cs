@@ -21,11 +21,11 @@ public class healer : MonoBehaviour, IDataPersistence
         data.healerBagCollected.TryGetValue(id, out collected);
         if(collected)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData( GameData data)
     {
         if(data.healerBagCollected.ContainsKey(id))
         {

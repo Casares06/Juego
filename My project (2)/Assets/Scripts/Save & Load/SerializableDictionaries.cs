@@ -27,6 +27,11 @@ public class SerializableDictionaries<TKey, TValue> : Dictionary<TKey, TValue>, 
     {
         this.Clear();
 
+        if(keys.Count != values.Count)
+        {
+            Debug.LogError("Amount of keys in dictionary (" + keys.Count + ") is not equal to the numer of values (" + values.Count +")");
+        }
+
         for (int i = 0; i < keys.Count; i++)
         {
             this.Add(keys[i], values[i]);
