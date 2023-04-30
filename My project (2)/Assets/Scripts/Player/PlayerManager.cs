@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     {
         RealHealer RH = collision.GetComponent<RealHealer>();
         ArrowPickUp ARP = collision.GetComponent<ArrowPickUp>();
+        
 
         if(collision.tag == "upgrade")
         {

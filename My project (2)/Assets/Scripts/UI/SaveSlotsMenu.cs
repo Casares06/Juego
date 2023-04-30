@@ -25,7 +25,8 @@ public class SaveSlotsMenu : Menu
             DataPersistenceManager.instance.NewGame();
             DataPersistenceManager.instance.SaveGame();
         }
-        SceneManager.LoadSceneAsync("Tutorial");
+        SceneManager.LoadScene("Tutorial");
+        PlayerPrefs.DeleteAll();
     }
 
     public void onBackClicked()
