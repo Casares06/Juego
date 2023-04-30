@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 4554796014110484685}
   - component: {fileID: 8977965331118695016}
   - component: {fileID: 5628106784042799158}
+  - component: {fileID: 907956289}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -382,22 +383,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c26d367d-6f55-47a2-ad6a-4aab2e004a66
-    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004854357500473865}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 423e6ec5-c924-417a-bbc6-dc9e24ace294
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -437,26 +422,14 @@ MonoBehaviour:
     m_ActionId: 59a992ed-5f54-43f1-8a43-ded8deb59bf5
     m_ActionName: UI/TrackedDevicePosition
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004854357500473865}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnRun
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 89c6862d-5537-406e-aa09-551022954f4d
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnJump
+        m_MethodName: OnRun
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,7 +445,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnHeal
+        m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -488,7 +461,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnRangeAttack
+        m_MethodName: OnHeal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -504,7 +477,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnCrouch
+        m_MethodName: OnRangeAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -520,7 +493,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1004854357500473865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: OnCrouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -532,6 +505,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 65a21f79-00be-451c-8049-e263ab2352c3
     m_ActionName: Player/Crouch[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1004854357500473865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: df51d141-b186-4c23-99cf-1af8c4a162db
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -668,6 +657,25 @@ MonoBehaviour:
   healthPickupEffect: {fileID: 8227631829943065244, guid: a66e5d7f25df64379af39b3e7177ed92, type: 3}
   moneyEffect: {fileID: 8049572125987333647, guid: 802e5570de34c49c5b21ecb44f80b782, type: 3}
   playerPosition: {fileID: 4552013888979319738}
+--- !u!114 &907956289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552013888979319743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673c7aab7881447c79d09be3e31850e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezetimer: 10
+  hottimer: 10
+  lerpTime: 0
+  cold: {r: 0.36765754, g: 0.86260545, b: 0.9622642, a: 1}
+  hot: {r: 1, g: 1, b: 1, a: 1}
+  Freezing: 0
+  Freezed: 0
 --- !u!1 &4558056051195900071
 GameObject:
   m_ObjectHideFlags: 0
