@@ -671,7 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freezetimer: 10
   hottimer: 10
-  lerpTime: 0
+  numberTimer: 0.3
   cold: {r: 0.36765754, g: 0.86260545, b: 0.9622642, a: 1}
   hot: {r: 1, g: 1, b: 1, a: 1}
   Freezing: 0
