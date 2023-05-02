@@ -308,6 +308,8 @@ MonoBehaviour:
   climbVelocity: 4
   fallingWallVelocity: 3
   runCountdown: 4
+  dashTimer: 0.3
+  dashForce: 6
   jumpImpulse: 13
   superJumpImpulse: 17
   wallJumpImpulseY: 12
@@ -522,6 +524,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: df51d141-b186-4c23-99cf-1af8c4a162db
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1004854357500473865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e68daa5c-42c3-407f-82a2-98966241f01f
+    m_ActionName: Player/Dash[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

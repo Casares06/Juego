@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float climbVelocity;
     public float fallingWallVelocity = 2f;
     public float runCountdown = 4f;
+    public float dashTimer = 1f;
+    public float dashForce;
 
     [Header("Jump Impulses")]
     public float jumpImpulse = 10f;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public bool HasClimb;
     public bool CanClimb;
     private bool HasWallJumped;
+    private bool HasDashed;
 
     private int FacingDirection = 1;
     public bool IsJumping;
@@ -227,6 +230,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(wallJumpImpulseX * transform.localScale.x, wallJumpImpulseY);
         }
+        if (HasDashed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x * dashForce, 0);
+        }
         
         
 
@@ -310,6 +317,21 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if(IsSuperRunning)
         {
             Shadows.me.ShadowsSkill();
+        }
+
+        if(HasDashed)
+        {
+            dashTimer -= Time.deltaTime;
+            Shadows.me.ShadowsSkill();
+
+            if(dashTimer <= 0)
+            {
+                animator.SetBool("Dash", false);
+                dashTimer = 0.3f;
+                HasDashed = false;
+                
+
+            }
         }
         
     }
@@ -464,6 +486,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if(context.canceled)
         {
             Interacted = false;
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetBool("Dash", true);
+            HasDashed = true;
         }
     }
 }
