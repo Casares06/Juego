@@ -54,3 +54,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Freeze
+    uniqueID: 2626743137
+    locked: 0

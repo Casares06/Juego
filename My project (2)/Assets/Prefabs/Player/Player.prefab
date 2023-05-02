@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 8977965331118695016}
   - component: {fileID: 5628106784042799158}
   - component: {fileID: 907956289}
+  - component: {fileID: 8844633133735952926}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -669,13 +670,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673c7aab7881447c79d09be3e31850e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   freezetimer: 10
   hottimer: 10
+  slider: 10
   numberTimer: 0.3
   cold: {r: 0.36765754, g: 0.86260545, b: 0.9622642, a: 1}
   hot: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 07193bdb7335b40d3ae6ed5b9a3ba96e, type: 2}
   Freezing: 0
   Freezed: 0
+  intensity: 0
+--- !u!114 &8844633133735952926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552013888979319743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4473fca7ae20b413b9cb588274bcec01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadow: {fileID: 4818968530722827588, guid: b70889985357e48f6b82443d1e1246a7, type: 3}
+  pool: []
+  appearingSpeed: 15
+  _color: {r: 0.23113209, g: 0.51315105, b: 1, a: 1}
 --- !u!1 &4558056051195900071
 GameObject:
   m_ObjectHideFlags: 0

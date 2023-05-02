@@ -306,6 +306,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             CanWallJumpAgain = true;
         }
+
+        if(IsSuperRunning)
+        {
+            Shadows.me.ShadowsSkill();
+        }
         
     }
 
