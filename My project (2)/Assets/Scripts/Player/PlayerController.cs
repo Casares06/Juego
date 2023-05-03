@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float runCountdown = 4f;
     public float dashTimer = 1f;
     public float dashForce;
+    public int dashRegen = 1;
+    private float dashRegenTime = 2;
 
     [Header("Jump Impulses")]
     public float jumpImpulse = 10f;
@@ -327,10 +329,22 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             if(dashTimer <= 0)
             {
                 animator.SetBool("Dash", false);
-                dashTimer = 0.3f;
+                dashRegen -= 1;
+                dashTimer = 0.2f;
                 HasDashed = false;
                 
 
+            }
+        }
+
+        if (dashRegenTime > 0 && dashRegen < 2)
+        {
+            dashRegenTime -= Time.deltaTime;
+
+            if(dashRegenTime <= 0)
+            {
+                dashRegen += 1;
+                dashRegenTime = 2;
             }
         }
         
@@ -491,7 +505,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && dashRegen > 0)
         {
             animator.SetBool("Dash", true);
             HasDashed = true;

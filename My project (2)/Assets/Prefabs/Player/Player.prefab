@@ -308,8 +308,9 @@ MonoBehaviour:
   climbVelocity: 4
   fallingWallVelocity: 3
   runCountdown: 4
-  dashTimer: 0.3
+  dashTimer: 0.2
   dashForce: 6
+  dashRegen: 2
   jumpImpulse: 13
   superJumpImpulse: 17
   wallJumpImpulseY: 12
