@@ -11,9 +11,16 @@ public class Secrets : MonoBehaviour
     {
         renderer = GetComponent<Tilemap>();
     }
-    
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggeEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            renderer.color = new Color(1f, 1f, 1f, 0.3f);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {

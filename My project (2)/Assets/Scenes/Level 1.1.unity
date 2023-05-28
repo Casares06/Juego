@@ -22155,7 +22155,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -23559,6 +23559,7 @@ MonoBehaviour:
   lastExitName: Level 1.2 Exit
   respawn: {fileID: 1398525109}
   respawnUI: {fileID: 1016028397}
+  respawnTimer: 3
 --- !u!1 &1398525109
 GameObject:
   m_ObjectHideFlags: 0
@@ -23591,6 +23592,7 @@ MonoBehaviour:
   lastExitName: Village Exit
   respawn: {fileID: 1398525109}
   respawnUI: {fileID: 1016028397}
+  respawnTimer: 3
 --- !u!4 &1398525111
 Transform:
   m_ObjectHideFlags: 0

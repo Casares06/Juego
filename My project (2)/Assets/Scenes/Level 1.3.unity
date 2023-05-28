@@ -19609,7 +19609,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -23057,6 +23057,7 @@ MonoBehaviour:
   lastExitName: Level 1.2 Exit2
   respawn: {fileID: 1389653826}
   respawnUI: {fileID: 1016028397}
+  respawnTimer: 3
 --- !u!1 &1489011534
 GameObject:
   m_ObjectHideFlags: 3

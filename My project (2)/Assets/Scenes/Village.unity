@@ -155,6 +155,7 @@ MonoBehaviour:
   lastExitName: Tutorial Exit
   respawn: {fileID: 90970010}
   respawnUI: {fileID: 1224218261}
+  respawnTimer: 3
 --- !u!4 &90970012
 Transform:
   m_ObjectHideFlags: 0
@@ -9707,7 +9708,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -10320,6 +10321,7 @@ MonoBehaviour:
   lastExitName: Level 1.1 Exit1
   respawn: {fileID: 90970010}
   respawnUI: {fileID: 1224218261}
+  respawnTimer: 3
 --- !u!1 &1402314254
 GameObject:
   m_ObjectHideFlags: 0

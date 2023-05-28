@@ -331,7 +331,6 @@ MonoBehaviour:
   HasQuiver: 0
   HasClimb: 0
   CanClimb: 0
-  IsJumping: 0
   Interacted: 0
 --- !u!114 &8482968280549620611
 MonoBehaviour:
@@ -662,6 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
+  necromancerProyectile: {fileID: 4614725987280671285, guid: e79f63b6594c545b89bb6043c6a6096b, type: 3}
 --- !u!114 &5628106784042799158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,3 +1013,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
+  necromancerProyectile: {fileID: 0}
