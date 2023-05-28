@@ -44,7 +44,7 @@ public class ColdDeath : MonoBehaviour
         if(Freezing && freezetimer >= 0 && !Freezed)
         {
             freezetimer -= Time.deltaTime;
-            spriterenderer.material.color = Color.Lerp(spriterenderer.material.color, cold, slider/10000);
+            //spriterenderer.material.color = Color.Lerp(spriterenderer.material.color, cold, slider/10000);
             hottimer = 10;
 
             slider -= Time.deltaTime;
@@ -59,9 +59,9 @@ public class ColdDeath : MonoBehaviour
         {
             Freezing = false;
             hottimer -= Time.deltaTime;
-            spriterenderer.material.color = Color.Lerp(spriterenderer.material.color, hot, slider/10000);
+            //spriterenderer.material.color = Color.Lerp(spriterenderer.material.color, hot, slider/10000);
             freezetimer = 10;
-            slider += Time.deltaTime;
+            slider += Time.deltaTime * 5;
 
             if (intensity >= 0f)
             {

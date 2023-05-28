@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float runCountdown = 4f;
     public float dashTimer = 1f;
     public float dashForce;
+    public float numDash;
+    public float numDashHave;
+    private float dashRegenTimer = 2;
 
     [Header("Jump Impulses")]
     public float jumpImpulse = 10f;
@@ -54,14 +57,16 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     private bool HasDashed;
 
     private int FacingDirection = 1;
-    public bool IsJumping;
+    private bool IsJumping;
     private bool _isMoving = false;
     private bool _isRangeAttacking = false;
     private bool IsCrouched;
     private bool ClimbButtonHeld;
     private float wallJumpTimer = 0.1f;
     private bool CanWallJumpAgain;
+    private bool IsSliding = false;
     public bool Interacted;
+    private float slideTimer = 3f;
 
     public void LoadData(GameData data)
     {
@@ -327,9 +332,37 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             if(dashTimer <= 0)
             {
                 animator.SetBool("Dash", false);
+                numDash -= 1;
                 dashTimer = 0.3f;
                 HasDashed = false;
                 
+
+            }
+        }
+
+        if (numDash < numDashHave)
+        {
+            dashRegenTimer-= Time.deltaTime;
+
+            if(dashRegenTimer <= 0)
+            {
+                numDash += 1;
+                dashRegenTimer = 2;
+            }
+        }
+
+        if (IsSliding)
+        {
+            slideTimer -= Time.deltaTime;
+            Debug.Log("SlideFinish");
+
+            if (slideTimer <= 0)
+            {
+                animator.SetBool(AnimationStrings.crouched, false);
+                animator.SetBool("SlideFinish", true);
+
+                IsSliding = false;
+                slideTimer += 3f;
 
             }
         }
@@ -458,7 +491,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !IsRunning)
+        {
+            animator.SetBool(AnimationStrings.crouched, true);
+            IsCrouched = true;
+            
+        }
+
+        else if (context.started && !IsRunning)
         {
             animator.SetBool(AnimationStrings.crouched, true);
             IsCrouched = true;
@@ -470,7 +510,18 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.SetBool(AnimationStrings.crouched, false);
             IsCrouched = false;
         }
-        IsSuperRunning = false;
+        
+        else if (context.started && IsRunning)
+        {
+            animator.SetBool(AnimationStrings.crouched, true);
+            IsSliding = true;
+        }
+
+        else if (context.started && IsSuperRunning)
+        {
+            animator.SetBool(AnimationStrings.crouched, true);
+            IsSliding = true;
+        }
         
         
     }
@@ -491,7 +542,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && numDash > 0)
         {
             animator.SetBool("Dash", true);
             HasDashed = true;
