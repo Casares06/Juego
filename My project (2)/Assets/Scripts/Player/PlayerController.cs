@@ -348,6 +348,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             {
                 numDash += 1;
                 dashRegenTimer = 2;
+                
             }
         }
 
@@ -363,6 +364,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
                 IsSliding = false;
                 slideTimer += 3f;
+
 
             }
         }
@@ -455,8 +457,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
 
     public void OnHit(int damage, Vector2 knockback)
-    {
+    { 
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        
     }
 
     public void OnHeal (InputAction.CallbackContext context)
@@ -547,5 +550,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.SetBool("Dash", true);
             HasDashed = true;
         }
+
+
     }
+
 }

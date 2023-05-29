@@ -102,7 +102,7 @@ public class Damageable : MonoBehaviour
             if(timeSinceHit > InvincibilityTime)
             {
                 IsInvincible = false;
-                timeSinceHit = 0;
+                  timeSinceHit = 0;
             }
 
             timeSinceHit += Time.deltaTime;

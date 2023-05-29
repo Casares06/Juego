@@ -32,6 +32,13 @@ public class MainMenu : Menu
         Time.timeScale = 1f;
     }
 
+    public void OnTestZoneClicked()
+    {
+        DisableMenuButtons();
+        SceneManager.LoadSceneAsync("TestZone");
+        Time.timeScale = 1f;
+    }
+
     public void onLoadClicked()
     {
         this.DeactivateMenu();
