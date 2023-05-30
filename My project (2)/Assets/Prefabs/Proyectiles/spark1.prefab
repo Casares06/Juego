@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92cfa07470243ada6a09c0f31d66b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: {x: 4, y: 0}
-  knockback: {x: 3, y: 1}
-  damage: 20
+  moveSpeed: {x: 16, y: 0}
+  knockback: {x: 7, y: 0}
+  damage: 45
   gotHit: 0
-  destroyTime: 5
+  destroyTime: 2

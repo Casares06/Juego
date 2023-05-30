@@ -266,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80713457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 154.10109, y: 3.52144, z: -10}
+  m_LocalPosition: {x: 153.54503, y: 3.4801998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21678,7 +21678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8db5ee4fc5b741f2b7ac3d8f010978b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnightAttackDamage: 200
+  KnightAttackDamage: 20000
   knockback: {x: 0, y: 0}
   gotHit: 0
 --- !u!66 &1406372116

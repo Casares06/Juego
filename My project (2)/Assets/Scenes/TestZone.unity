@@ -1695,6 +1695,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1004854357500473865, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: healers
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004854357500473865, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: maxHealers
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004854357500473865, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
+      propertyPath: healthRestore
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3195356347796621748, guid: eb8a7d89f27e4445e80de5c1f27d1eb4, type: 3}
       propertyPath: m_Size.y
       value: 1.8
@@ -2252,10 +2264,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   necromancerProyectile: {fileID: 4614725987280671285, guid: e79f63b6594c545b89bb6043c6a6096b, type: 3}
+  necromancerBolt: {fileID: 7481186648944744654, guid: dc44ec7c610b345a1af5e7861ccf5bc6, type: 3}
+  plasmaBall: {fileID: 6839552383842891553, guid: 44d7ecd4b7ec54d9890e4452a51a03a0, type: 3}
+  launcher: {fileID: 1646130077}
   HealthBar: {fileID: 766535961}
   slideSpeed: 15
   Health: 0
   MaxHealth: 0
+  Angry: 0
+  hitTimer: 3
+  Hit: 1
+  numHit: 0
 --- !u!95 &766535955
 Animator:
   serializedVersion: 5
@@ -2341,6 +2360,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 982462328}
+  - {fileID: 1646130077}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3510,6 +3530,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1646130076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646130077}
+  m_Layer: 8
+  m_Name: Launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646130077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646130076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.13, y: -1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 766535957}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679868607
 GameObject:

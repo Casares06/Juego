@@ -6,7 +6,7 @@ public class ProyectileLauncher : MonoBehaviour
 {
     public Transform launchPoint;
     public GameObject proyectilePrefab;
-    public GameObject necromancerProyectile;
+    public GameObject plasmaBall;
     PlayerController PC;
 
     void Awake()
@@ -27,11 +27,4 @@ public class ProyectileLauncher : MonoBehaviour
         }
     }
 
-    public void NecromancerLightning()
-    {
-        GameObject proyectile = Instantiate(necromancerProyectile, new Vector2(transform.position.x, transform.position.y + 5), necromancerProyectile.transform.rotation);
-        //Vector3 origScale = proyectile.transform.localScale;
-        //proyectile.transform.localScale = new Vector3(origScale.x * transform.localScale.x > 0 ? 1 : -1, origScale.y, origScale.z);
-
-    }
 }
