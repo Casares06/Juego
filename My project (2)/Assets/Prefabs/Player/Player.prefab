@@ -646,7 +646,7 @@ MonoBehaviour:
   _health: 100
   _isAlive: 1
   IsInvincible: 0
-  InvincibilityTime: 0
+  InvincibilityTime: 0.2
 --- !u!114 &8977965331118695016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
-  necromancerProyectile: {fileID: 4614725987280671285, guid: e79f63b6594c545b89bb6043c6a6096b, type: 3}
+  plasmaBall: {fileID: 0}
 --- !u!114 &5628106784042799158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,4 +1013,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 6290793957659623524}
   proyectilePrefab: {fileID: 8826603170887934701, guid: c12b739796f8646c797f7e28f8a8a7f3, type: 3}
-  necromancerProyectile: {fileID: 0}
+  plasmaBall: {fileID: 0}
