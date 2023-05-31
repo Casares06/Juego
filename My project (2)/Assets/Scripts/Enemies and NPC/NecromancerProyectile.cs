@@ -57,11 +57,11 @@ public class NecromancerProyectile : MonoBehaviour
 
     public void NecromancerPlasmaBalls()
     {
-        GameObject proyectile = Instantiate(plasmaBall, new Vector2(launcher.transform.position.x, launcher.transform.position.y -1.5f), plasmaBall.transform.rotation);
+        GameObject proyectile = Instantiate(plasmaBall, new Vector2(launcher.transform.position.x, launcher.transform.position.y -1f), plasmaBall.transform.rotation);
         Vector3 origScale = proyectile.transform.localScale;
         proyectile.transform.localScale = new Vector3(origScale.x * transform.localScale.x > 0 ? 1 : -1, origScale.y, origScale.z);
 
-        GameObject proyectile1 = Instantiate(plasmaBall, new Vector2(launcher.transform.position.x, launcher.transform.position.y ), plasmaBall.transform.rotation);
+        GameObject proyectile1 = Instantiate(plasmaBall, new Vector2(launcher.transform.position.x, launcher.transform.position.y + 0.5f), plasmaBall.transform.rotation);
         Vector3 origScale1 = proyectile1.transform.localScale;
         proyectile1.transform.localScale = new Vector3(origScale1.x * transform.localScale.x > 0 ? 1 : -1, origScale1.y, origScale1.z);
 
