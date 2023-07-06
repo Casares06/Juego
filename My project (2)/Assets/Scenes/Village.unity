@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastExitName: Tutorial Exit
   respawn: {fileID: 90970010}
-  respawnUI: {fileID: 1224218261}
+  respawnUI: {fileID: 407442404}
   respawnTimer: 3
 --- !u!4 &90970012
 Transform:
@@ -863,6 +863,11 @@ Sprite:
 Transform:
   m_CorrespondingSourceObject: {fileID: 633056837521617862, guid: 6cfbf12ceb32d433db6e6fc051edc656, type: 3}
   m_PrefabInstance: {fileID: 1880354806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &407442404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 407442404, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
+  m_PrefabInstance: {fileID: 1224218260}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &515859053
 PrefabInstance:
@@ -9915,34 +9920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1594955243305887908, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -611.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1594955243305887908, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -194.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378865135073102031, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378865135073102031, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049918514281497698, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049918515680462215, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049918515680462215, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8049918515985807006, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -9993,11 +9970,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
---- !u!1 &1224218261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2064948001049495990, guid: 4bbdf73fad02c4c8ba2772d8915704a5, type: 3}
-  m_PrefabInstance: {fileID: 1224218260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380043402
 GameObject:
   m_ObjectHideFlags: 0
@@ -10320,7 +10292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastExitName: Level 1.1 Exit1
   respawn: {fileID: 90970010}
-  respawnUI: {fileID: 1224218261}
+  respawnUI: {fileID: 407442404}
   respawnTimer: 3
 --- !u!1 &1402314254
 GameObject:

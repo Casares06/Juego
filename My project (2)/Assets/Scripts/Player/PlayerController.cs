@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float dashForce;
     public float numDash;
     public float numDashHave;
-    private float dashRegenTimer = 2;
+    public float dashRegenTimer = 0;
 
     [Header("Jump Impulses")]
     public float jumpImpulse = 10f;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     Vector2 moveInput;
     TouchingDirections touchingdirections;
     Damageable damageable;
+    HealthBar HP;
 
     Rigidbody2D rb;
     Animator animator;
@@ -218,6 +219,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         touchingdirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
         transform = GetComponent<Transform>();
+        HP = GameObject.Find("HealthBar").GetComponentInChildren<HealthBar>();
     }
 
     private void FixedUpdate()
@@ -342,12 +344,12 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         if (numDash < numDashHave)
         {
-            dashRegenTimer-= Time.deltaTime;
+            dashRegenTimer += Time.deltaTime;
 
-            if(dashRegenTimer <= 0)
+            if(dashRegenTimer >= 2)
             {
                 numDash += 1;
-                dashRegenTimer = 2;
+                dashRegenTimer = 0;
                 
             }
         }
@@ -355,19 +357,20 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (IsSliding)
         {
             slideTimer -= Time.deltaTime;
-            Debug.Log("SlideFinish");
 
-            if (slideTimer <= 0)
+            if (slideTimer <= 0 || rb.velocity.x == 0)
             {
-                animator.SetBool(AnimationStrings.crouched, false);
+                //animator.SetBool(AnimationStrings.crouched, false);
                 animator.SetBool("SlideFinish", true);
 
                 IsSliding = false;
-                slideTimer += 3f;
+                slideTimer = 1f;
 
 
             }
         }
+
+        
         
     }
 
@@ -386,12 +389,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             //face right
             IsFacingRight = true;
+            slideTimer = 0;
         }
         else if (moveInput.x < 0 && IsFacingRight)
         {
             // face left
             IsFacingRight = false;
+            slideTimer = 0;
         }
+        
         runCountdown = 4f;
     }
 
@@ -470,6 +476,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             healers -= 1;
 
             animator.SetTrigger(AnimationStrings.heal);
+
             if(damageable.Health > damageable.MaxHealth)
             {
                 damageable.Health = damageable.MaxHealth;
@@ -508,21 +515,24 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             
         }
 
-        else if (context.canceled)
+        else if (context.canceled) //&& !IsSliding)
         {
             animator.SetBool(AnimationStrings.crouched, false);
             IsCrouched = false;
+            
         }
         
         else if (context.started && IsRunning)
         {
             animator.SetBool(AnimationStrings.crouched, true);
+            animator.SetBool("SlideFinish", false);
             IsSliding = true;
         }
 
         else if (context.started && IsSuperRunning)
         {
             animator.SetBool(AnimationStrings.crouched, true);
+            animator.SetBool("SlideFinish", false);
             IsSliding = true;
         }
         

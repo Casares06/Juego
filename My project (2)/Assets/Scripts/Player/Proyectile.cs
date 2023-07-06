@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Proyectile : MonoBehaviour
 {
+    public bool Bomb;
     public Vector2 moveSpeed = new Vector2(7f, 0);
     public Vector2 knockback = new Vector2(3, 1);
     public int damage = 10;
@@ -21,6 +22,10 @@ public class Proyectile : MonoBehaviour
     void Start()
     {
         rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);
+        if (Bomb)
+        {
+            rb.velocity = new Vector2(8 * transform.localScale.x, Random.Range(2,9));
+        }
     }
 
     void Update()
@@ -49,6 +54,11 @@ public class Proyectile : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    public void ToDestroy()
+    {
+        Destroy(gameObject);
     }
 
 }

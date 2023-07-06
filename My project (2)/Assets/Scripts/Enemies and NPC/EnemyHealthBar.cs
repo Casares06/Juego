@@ -7,6 +7,8 @@ public class EnemyHealthBar : MonoBehaviour
 {
     public Slider Slider;
 
+    public bool Boss;
+
     public Color Low;
     public Color High;
     public Vector3 Offset;
@@ -27,9 +29,12 @@ public class EnemyHealthBar : MonoBehaviour
         
     }
 
-    //void Update()
-   // {
-      //  Slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
-   // }
+    void Update()
+    {
+        if(!Boss)
+        {
+            Slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
+        }
+    }
 
 }

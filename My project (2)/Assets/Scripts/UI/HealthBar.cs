@@ -6,17 +6,23 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider healthBarSlider;
-    public TMP_Text healthBarText;
 
-    public Color Low;
-    public Color High;
+
+   public Image fillImage;
+   public Image damageFillImage;
+   // [SerializeField] private Image fillImage;
+    //[SerializeField] private Image damageFillImage;
+    public float healthTimer = 1f;
+    private float shrinkSpeed = 0.5f;
 
     Damageable playerDamageable;
+
+    PlayerController PC;
     
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PC = player.GetComponent<PlayerController>();
         playerDamageable = player.GetComponent<Damageable>();
 
         if (player == null)
@@ -26,33 +32,42 @@ public class HealthBar : MonoBehaviour
     }
     void Start()
     {
-        healthBarSlider.value = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
-        healthBarText.text = "Health: " + playerDamageable.Health + "/" + playerDamageable.MaxHealth;
+        fillImage.fillAmount = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
+        damageFillImage.fillAmount = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
     }
 
     void Update()
     {
-        healthBarSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, healthBarSlider.normalizedValue);
-    }
+        fillImage.fillAmount = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
+        healthTimer -= Time.deltaTime;
 
-    private void OnEnable()
-    {
-        playerDamageable.healthChanged.AddListener(OnPlayerHealthChanged);
-    }
+        if (healthTimer < 0) 
+        {
+            if(fillImage.fillAmount < damageFillImage.fillAmount)
+            {
+                damageFillImage.fillAmount -= shrinkSpeed * Time.deltaTime;
+            }
+                
+        }
 
-    private void OnDisable()
-    {
-        playerDamageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
+        if(fillImage.fillAmount > damageFillImage.fillAmount)
+        {
+            damageFillImage.fillAmount = fillImage.fillAmount;
+        }
+
+        if(playerDamageable.gotHit)
+        {
+            healthTimer = 1f;
+            playerDamageable.gotHit = false;
+        }
+
+
+        
     }
+    
 
     private float CalculateSliderPercentage(float currentHealth, float maxHealth)
     {
         return currentHealth / maxHealth;
-    }
-
-    private void OnPlayerHealthChanged(int newHealth, int maxHealth)
-    {
-        healthBarSlider.value = CalculateSliderPercentage(newHealth, maxHealth);
-        healthBarText.text = "Health: " + newHealth + "/" + maxHealth;
     }
 }

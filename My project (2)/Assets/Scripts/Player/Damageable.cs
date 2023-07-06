@@ -10,8 +10,10 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, int> healthChanged;
 
     Animator animator;
+    HealthBar HP;
     public int _maxHealth = 100;
     public bool gotHit;
+    
 
 
     public int MaxHealth
@@ -93,6 +95,7 @@ public class Damageable : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        HP = GameObject.Find("HealthBar").GetComponentInChildren<HealthBar>();
     }
 
     private void Update()
@@ -107,6 +110,7 @@ public class Damageable : MonoBehaviour
 
             timeSinceHit += Time.deltaTime;
         }
+        
 
     }
 
@@ -124,9 +128,12 @@ public class Damageable : MonoBehaviour
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);
             gotHit = true;
 
+            
+
             return true;
         }
-        gotHit = false;
+
+        
 
         return false;
 

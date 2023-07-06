@@ -6,12 +6,11 @@ public class ProyectileLauncher : MonoBehaviour
 {
     public Transform launchPoint;
     public GameObject proyectilePrefab;
-    public GameObject plasmaBall;
     PlayerController PC;
 
     void Awake()
     {
-        PC = GetComponent<PlayerController>();
+        PC = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     public void FireProyectile()

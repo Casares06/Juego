@@ -20,6 +20,7 @@ public class NecromancerProyectile : MonoBehaviour
     public int Health;
     public int MaxHealth;
     private int random;
+    public bool CanHit;
 
     private bool IsSliding;
 
@@ -28,6 +29,7 @@ public class NecromancerProyectile : MonoBehaviour
     public float hitTimer = 4f;
     public bool Hit = true;
     public int numHit = 0;
+    private float destroyTimer = 2f;
 
     void Awake()
     {
@@ -69,9 +71,12 @@ public class NecromancerProyectile : MonoBehaviour
 
     public void OnHit(int damage, Vector2 knockback)
     {
-        rb.velocity = new Vector2(0, rb.velocity.y + 0);
-        animator.SetTrigger("Hit");
-        Hit = true;
+        if (CanHit)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y + 0);
+            animator.SetTrigger("Hit");
+            Hit = true;
+        }
 
     }
 
@@ -94,6 +99,7 @@ public class NecromancerProyectile : MonoBehaviour
             numHit = 0;
             Angry = false;
             hitTimer = 4;
+            //CanHit = true;
         }
 
         hitTimer -= Time.deltaTime;
@@ -108,6 +114,16 @@ public class NecromancerProyectile : MonoBehaviour
         if (attackTimer <= 0)
         {
             AttackAlternate();
+        }
+
+        if(!damageable.IsAlive)
+        {
+            destroyTimer -= Time.deltaTime;
+
+            if(destroyTimer < 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         
@@ -145,6 +161,7 @@ public class NecromancerProyectile : MonoBehaviour
     void SlideAttack()
     {
         FlipDirection();
+        CanHit = false;
         IsSliding = true;
         animator.SetBool("IsMoving", true);
         animator.SetBool("IsAttacking", false);
@@ -168,6 +185,7 @@ public class NecromancerProyectile : MonoBehaviour
 
         if (numHit <= 4 && hitTimer >= 0 && Angry)
         {
+            CanHit = false;
             Debug.Log("Angry");
             ResetAnimator();
             SlideAttack();
@@ -178,6 +196,7 @@ public class NecromancerProyectile : MonoBehaviour
 
 
         attackTimer += 1;
+        
 
     }
 

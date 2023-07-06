@@ -312,6 +312,7 @@ MonoBehaviour:
   dashForce: 5
   numDash: 2
   numDashHave: 2
+  dashRegenTimer: 0
   jumpImpulse: 13
   superJumpImpulse: 17
   wallJumpImpulseY: 12
