@@ -39,6 +39,12 @@ public class Proyectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Damageable damageable = collision.GetComponent<Damageable>();
 
         

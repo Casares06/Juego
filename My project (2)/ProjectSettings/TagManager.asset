@@ -11,6 +11,7 @@ TagManager:
   - ArrowsUI
   - PauseMenuUI
   - Money
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,10 @@ public class UIManager : MonoBehaviour
 
     public Canvas gameCanvas;
 
-    void Awake()
+    void Start()
     {
-        gameCanvas = FindObjectOfType<Canvas>();
+        GameObject temporary = GameObject.Find("Canvas");
+        gameCanvas = temporary.GetComponent<Canvas>();
     }
 
     void OnEnable()
